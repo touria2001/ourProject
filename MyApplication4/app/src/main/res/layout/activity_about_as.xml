@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/welcome"
+    tools:context=".AnimationLoginActivity">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        >
+        <ImageView
+            android:id="@+id/img_view_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/attae"
+            />
+        <TextView
+            android:id="@+id/txt_view1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_view_logo"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="About As  "
+            android:textColor="@color/likeWhite"
+            android:textSize="30dp"
+            android:textStyle="bold|italic"
+            android:textFontWeight="@integer/material_motion_duration_long_1"
+            android:layout_marginTop="20dp"
+            />
+
+        <TextView
+            android:id="@+id/txt_view2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_view1"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Welcome!We are four engineers students, working  with big  team spirit to create this beautiful project."
+            android:textColor="@color/likeWhite"
+            android:textFontWeight="@integer/material_motion_duration_long_1"
+            android:textSize="30dp"
+            android:textStyle="bold|italic" />
+
+        <Button
+            android:id="@+id/btn_close"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_view2"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="170dp"
+            android:background="@drawable/buttons"
+            android:fontFamily="sans-serif"
+            android:text="Close"
+            android:textColor="@color/likeWhite"
+            android:textSize="@dimen/fab_margin"
+            android:textStyle="bold|italic" />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

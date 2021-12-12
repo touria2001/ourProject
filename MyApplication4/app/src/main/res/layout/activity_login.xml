@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/welcome"
+    tools:context=".LoginActivity">
+    <ImageView
+        android:id="@+id/login_applogo"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:src="@drawable/attae"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+    />
+    <EditText
+        android:id="@+id/Login_phone_number_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_applogo"
+        android:background="@drawable/inputs_design"
+        android:padding="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint="Phone Number"
+        android:inputType="number"
+        android:textStyle="bold"
+        android:textColorHint="@color/likeWhite"
+        android:textSize="17sp"
+        android:paddingStart="12dp"
+        android:drawablePadding="12dp"
+        android:drawableStart="@drawable/ic_baseline_person_24"
+        android:textColor="@color/likeWhite"
+        />
+
+    <EditText
+        android:id="@+id/Login_password_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Login_phone_number_input"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/inputs_design"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="20dp"
+        android:textColorHint="@color/likeWhite"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:paddingStart="12dp"
+        android:drawablePadding="12dp"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:textColor="@color/likeWhite"
+        />
+
+    <LinearLayout
+        android:id="@+id/Linear_Layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Login_password_input"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <com.rey.material.widget.CheckBox
+            android:id="@+id/remember_me_chkb"
+            style="@style/Material.Drawable.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="17dp"
+            android:gravity="center_vertical"
+            android:text="remember me"
+            android:textColor="@color/likeWhite"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/forget_password_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:text="Forgot Password ?"
+            android:textColor="@color/likeWhite"
+            android:textSize="13sp"
+            android:textStyle="bold"
+
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Linear_Layout1"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/buttons"
+        android:padding="20dp"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:id="@+id/not_admin_panel_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_btn"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="23dp"
+        android:text="I'm not an Admin ?"
+        android:textColor="@color/green1"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+</RelativeLayout>
