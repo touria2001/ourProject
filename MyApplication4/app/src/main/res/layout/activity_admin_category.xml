@@ -5,18 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AdminCategoryActivity">
-    <TextView
-        android:id="@+id/slogin_category"
+
+    <ImageView
+        android:id="@+id/img_view_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        android:src="@drawable/attae"
+        android:layout_marginStart="55dp"
+        />
+
+
+    <RelativeLayout
+        android:id="@+id/deltaRelative1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp"
-        android:text="Add New Product"
-        android:textAlignment="center"
-        android:textSize="26sp"
-        android:textStyle="bold"
-    />
+        android:layout_below="@+id/img_view_logo"
+        >
+        <TextView
+            android:id="@+id/slogin_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:text="Choose The Category Please"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/green3"
+            />
     <LinearLayout
         android:id="@+id/Linear1_Category_Layout"
         android:layout_width="match_parent"
@@ -25,7 +43,8 @@
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_marginTop="45dp">
+        android:layout_marginTop="0dp"
+        >
         <ImageView
             android:id="@+id/t_shirts"
             android:layout_width="wrap_content"
@@ -57,7 +76,7 @@
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_marginTop="45dp">
+        android:layout_marginTop="12dp">
         <ImageView
             android:id="@+id/glasses"
             android:layout_width="80dp"
@@ -91,7 +110,7 @@
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_marginTop="45dp">
+        android:layout_marginTop="12dp">
         <ImageView
             android:id="@+id/laptop_pc"
             android:layout_width="80dp"
@@ -117,4 +136,18 @@
             />
 
     </LinearLayout>
+    </RelativeLayout>
+    <Button
+        android:id="@+id/btn_close"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/deltaRelative1"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/buttons"
+        android:fontFamily="sans-serif"
+        android:text="Cancel"
+        android:textColor="@color/likeWhite"
+        android:textSize="@dimen/fab_margin"
+        android:textStyle="bold|italic" />
 </RelativeLayout>

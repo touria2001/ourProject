@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class AdminCategoryActivity extends AppCompatActivity {
     private ImageView tShirts, sportsTShirts, femaleDresses, sweathers;
     private ImageView glasses, hatsCaps, walletsBagsPurses, shoes;
     private ImageView headPhonesHandFree, Laptops, watches, mobilPhones;
+    private Button close;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,14 @@ public class AdminCategoryActivity extends AppCompatActivity {
 
         watches = (ImageView) findViewById(R.id.watches);
         mobilPhones=(ImageView)findViewById(R.id.mobilesphones);
+        close = (Button) findViewById(R.id.btn_close);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(AdminCategoryActivity.this,HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
         tShirts.setOnClickListener(new View.OnClickListener() {
             @Override
