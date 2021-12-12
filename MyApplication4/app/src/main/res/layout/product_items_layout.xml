@@ -13,7 +13,7 @@
         android:background="@drawable/inputs_design">
 
         <ImageButton
-            android:id="@+id/s"
+            android:id="@+id/deleteBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -26,7 +26,7 @@
             android:id="@+id/product_image"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_below="@+id/s"
+            android:layout_below="@+id/deleteBtn"
             android:layout_marginTop="2dp"
             android:background="@drawable/inputs_design"
             android:innerRadius="10dp"

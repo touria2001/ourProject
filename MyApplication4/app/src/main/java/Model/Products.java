@@ -1,13 +1,13 @@
 package Model;
 
 public class Products {
-    private String pname, description, price, image, category, pid, date, time,res;
+    private String pname, description, price, image, category, pid, date, time,reserver, user;
     public Products() {
 
     }
 
-    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time,String res) {
-      //  this.pname = pname;
+    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time,String reserver, String user) {
+        //  this.pname = pname;
         this.description = description;
         this.price = price;
         this.image = image;
@@ -15,6 +15,8 @@ public class Products {
         this.pid = pid;
         this.date = date;
         this.time = time;
+        this.reserver = reserver;
+        this.user = user;
 
     }
 
@@ -82,6 +84,19 @@ public class Products {
         this.time = time;
     }
 
+    public String getReserver() {
+        return reserver;
+    }
 
+    public void setReserver(String reserver) {
+        this.reserver = reserver;
+    }
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.myapplication4;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,12 +17,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication4.ViewHolder.ProductViewHolder;
+import com.example.myapplication4.databinding.ActivitySettinsBinding;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -33,19 +36,24 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication4.databinding.ActivityHomeBinding;
+//import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import Model.Products;
 import Prevalent.Prevalent;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class HomeActivity extends AppCompatActivity  {
     private DatabaseReference ProductsRef;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHomeBinding binding;
+    private ActivitySettinsBinding settingsbinding;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
@@ -72,9 +80,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //            }
 //        });
 
-       DrawerLayout drawer = binding.drawerLayout;
-      NavigationView navigationView = binding.navView;
-        navigationView.setNavigationItemSelectedListener(this);
+        DrawerLayout drawer = binding.drawerLayout;
+        NavigationView navigationView = binding.navView;
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -95,24 +102,63 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
     }
-Button reserver;
+    Button reserver;
     @Override
     protected void onStart() {
         super.onStart();
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
-                .setQuery(ProductsRef, Products.class)
-                .build();
+                        .setQuery(ProductsRef, Products.class)
+                        .build();
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
                         holder.txtProductPrice.setText(Html.fromHtml("<a href=\"mailto:"+model.getPrice()+"\">"+model.getPrice()+"</a>"));
                         holder.txtProductPrice.setMovementMethod(LinkMovementMethod.getInstance());
-                       // holder.txtProductName.setText(model.getPname());
+                        // holder.txtProductName.setText(model.getPname());
                         holder.txtProductDescription.setText("ville : "+model.getDescription());
+                        holder.pid = model.getPid();
+                        if (!getIntent().getExtras().get("loggedUser").toString().equals(model.getUser())){
+                            holder.deleteBtn.setVisibility(View.GONE);
+                        } else {
+                            holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    AlertDialog.Builder alert = new AlertDialog.Builder(HomeActivity.this);
+                                    alert.setTitle("Confirmation");
+                                    alert.setMessage("Are you sure you want to delete this item ?");
+                                    alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            ProductsRef.child(holder.pid).removeValue();
+                                            dialogInterface.dismiss();
+                                        }
+                                    });
+                                    alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            dialogInterface.dismiss();
+                                        }
+                                    });
+                                    alert.show();
 
+                                }
+                            });
+                        }
+                        holder.reserver.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Map<String, Object> updateReservation = new HashMap<String,Object>();
+                                updateReservation.put("reserver", "oui");
+                                ProductsRef.child(holder.pid).updateChildren(updateReservation);
+                            }
+                        });
                         Picasso.get().load(model.getImage()).into(holder.imageView);
+                        if(model.getReserver().equals("non")){
+                            holder.reserver.setBackgroundResource(R.color.white);
+                        }
+                        else { holder.reserver.setBackgroundResource(R.color.black);}
 
 
                     }
@@ -126,8 +172,8 @@ Button reserver;
                     }
                 };
 
-recyclerView.setAdapter(adapter);
-adapter.startListening();
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
 
 
     }
@@ -170,56 +216,23 @@ adapter.startListening();
         return super.onOptionsItemSelected(item);
     }
     @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item)
-    {
-        Log.d("myTag", "This is my messageeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.contact_admin)
-        {
-            Intent intent = new Intent(HomeActivity.this,ChatActivity.class);
-            startActivity(intent);
-        }
-        else if (id == R.id.nav_settings)
-        {
-
-            Intent intent = new Intent(HomeActivity.this, SettinsActivity.class);
-            startActivity(intent);
-        }
-        else if (id == R.id.nav_about_as)
-        {
-
-            Intent intent = new Intent(HomeActivity.this, AboutAsActivity.class);
-            startActivity(intent);
-        }
-        else if (id == R.id.nav_logout)
-        {
-            Paper.book().destroy();
-
-            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
 
     public void ajouter(View view) {
         Intent intent = new Intent(this, AdminCategoryActivity.class);
+        intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
         startActivity(intent);
     }
 
     public void reserver(View view) {
 
-      view.setBackgroundResource(R.color.black);
+        view.setBackgroundResource(R.color.black);
 
+    }
+
+    public void showSettings(View view){
+        setContentView(ActivitySettinsBinding.inflate(getLayoutInflater()).getRoot());
     }
 
 

@@ -206,6 +206,8 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         productMap.put("category", CategoryName);
         productMap.put("price", Price);
         productMap.put("pname", Pname);
+        productMap.put("reserver","non");
+        productMap.put("user", getIntent().getExtras().get("loggedUser").toString());
 
         ProductsRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
