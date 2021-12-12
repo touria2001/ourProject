@@ -2,6 +2,7 @@ package com.example.myapplication4.ViewHolder;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +17,9 @@ public class ProductViewHolder extends RecyclerView.ViewHolder implements View.O
     public TextView txtProductName, txtProductDescription, txtProductPrice;
     public ImageView imageView;
     public ItemClickListner listner;
+    public Button reserver;
+    public ImageButton deleteBtn;
+    public String pid;
 
 
 
@@ -26,18 +30,19 @@ public class ProductViewHolder extends RecyclerView.ViewHolder implements View.O
         txtProductName = (TextView) itemView.findViewById(R.id.product_name);
         txtProductDescription = (TextView) itemView.findViewById(R.id.product_description);
         txtProductPrice = (TextView) itemView.findViewById(R.id.product_price);
-
+        reserver=(Button) itemView.findViewById(R.id.reserver);
+        deleteBtn = (ImageButton) itemView.findViewById(R.id.deleteBtn);
 
 
 
     }
     public void setItemClickListner(ItemClickListner listner)
     {
-      this.listner= listner;
+        this.listner= listner;
     }
 
     @Override
     public void onClick(View view) {
-           listner.onClick(view, getAdapterPosition(),false);
+        listner.onClick(view, getAdapterPosition(),false);
     }
 }
