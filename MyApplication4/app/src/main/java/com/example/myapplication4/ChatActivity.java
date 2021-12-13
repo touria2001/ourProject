@@ -22,7 +22,7 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
         messageSend=(EditText) findViewById(R.id.messagesend);
         // getIntent().getExtras().get("loggedUser").toString();
-        messageSend.setText(getIntent().getExtras().get("destinataire").toString());
+     //   messageSend.setText(getIntent().getExtras().get("destinataire").toString());
 //        reference= FirebaseDatabase.getInstance().getReference("Users");
 //        reference.child(getIntent().getExtras().get("loggedUser").toString()).child("message").setValue(messageSend.getText());
 
