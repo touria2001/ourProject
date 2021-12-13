@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView NotAdminLink;
     private String parentDbName = "Users";
     private CheckBox checkBoxRemrmberMe;
+    private TextView forgotPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         LoginButton = (Button) findViewById(R.id.login_btn);
+        forgotPassword = (TextView) findViewById(R.id.forget_password_link);
         InputPhoneNumber = (EditText) findViewById(R.id.Login_phone_number_input);
         InputPassword  = (EditText) findViewById(R.id.Login_password_input);
         LoadingBar = new ProgressDialog(this);
@@ -56,6 +58,14 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+            forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,ForgotPasswordActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 //        AdminLink.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -128,6 +138,7 @@ public class LoginActivity extends AppCompatActivity {
                                     LoadingBar.dismiss();
                                     Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
                                     intent.putExtra("loggedUser", phone);
+
                                     Prevalent.currentOnLineUser = usersData;
                                     startActivity(intent);
                                 }

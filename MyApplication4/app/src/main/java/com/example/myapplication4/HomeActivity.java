@@ -17,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication4.ViewHolder.ProductViewHolder;
-import com.example.myapplication4.databinding.ActivitySettinsBinding;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.snackbar.Snackbar;
@@ -36,7 +35,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication4.databinding.ActivityHomeBinding;
-//import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -49,11 +47,10 @@ import Prevalent.Prevalent;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private DatabaseReference ProductsRef;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHomeBinding binding;
-    private ActivitySettinsBinding settingsbinding;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
@@ -80,10 +77,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //            }
 //        });
 
-        DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
+       DrawerLayout drawer = binding.drawerLayout;
+      NavigationView navigationView = binding.navView;
         navigationView.setNavigationItemSelectedListener(this);
-
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -104,22 +100,23 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
     }
-    Button reserver;
+Button reserver;
     @Override
     protected void onStart() {
         super.onStart();
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
-                        .setQuery(ProductsRef, Products.class)
-                        .build();
+                .setQuery(ProductsRef, Products.class)
+                .build();
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
                         holder.txtProductPrice.setText(Html.fromHtml("<a href=\"mailto:"+model.getPrice()+"\">"+model.getPrice()+"</a>"));
                         holder.txtProductPrice.setMovementMethod(LinkMovementMethod.getInstance());
-                        // holder.txtProductName.setText(model.getPname());
+                       // holder.txtProductName.setText(model.getPname());
                         holder.txtProductDescription.setText("ville : "+model.getDescription());
+
                         holder.pid = model.getPid();
                         if (!getIntent().getExtras().get("loggedUser").toString().equals(model.getUser())){
                             holder.deleteBtn.setVisibility(View.GONE);
@@ -160,7 +157,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         if(model.getReserver().equals("non")){
                             holder.reserver.setBackgroundResource(R.color.white);
                         }
-                        else { holder.reserver.setBackgroundResource(R.color.green2);}
+                        else { holder.reserver.setBackgroundResource(R.color.black);}
+
+
 
 
                     }
@@ -174,8 +173,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     }
                 };
 
-        recyclerView.setAdapter(adapter);
-        adapter.startListening();
+recyclerView.setAdapter(adapter);
+adapter.startListening();
 
 
     }
@@ -222,6 +221,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item)
     {
 
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -258,7 +258,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
     public void ajouter(View view) {
         Intent intent = new Intent(this, AdminCategoryActivity.class);
         intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
@@ -269,10 +268,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         view.setBackgroundResource(R.color.black);
 
-    }
-
-    public void showSettings(View view){
-        setContentView(ActivitySettinsBinding.inflate(getLayoutInflater()).getRoot());
     }
 
 

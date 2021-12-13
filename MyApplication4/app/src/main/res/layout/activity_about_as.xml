@@ -11,12 +11,12 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         >
-
         <ImageView
             android:id="@+id/img_view_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/attae" />
+            android:src="@drawable/attae"
+            />
         <TextView
             android:id="@+id/txt_view1"
             android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             android:layout_below="@+id/img_view_logo"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="About As  "
+            android:text="About Us  "
             android:textColor="@color/likeWhite"
             android:textSize="30dp"
             android:textStyle="bold|italic"

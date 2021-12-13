@@ -50,19 +50,19 @@ public class MainActivity extends AppCompatActivity {
         });
         String UserPhoneKey = Paper.book().read(Prevalent.UserPhoneKey);
         String UserPasswordKey =  Paper.book().read(Prevalent.UserPasswordKey);
-        if(UserPhoneKey !=" " && UserPasswordKey!=" ")
-        {
-            if(!TextUtils.isEmpty(UserPhoneKey)  && !TextUtils.isEmpty(UserPasswordKey)  )
-            {
-                AllowAccess(UserPhoneKey,UserPasswordKey);
+          if(UserPhoneKey !=" " && UserPasswordKey!=" ")
+          {
+              if(!TextUtils.isEmpty(UserPhoneKey)  && !TextUtils.isEmpty(UserPasswordKey)  )
+              {
+                  AllowAccess(UserPhoneKey,UserPasswordKey);
 
-                LoadingBar.setTitle("Already Logged in");
-                LoadingBar.setMessage("Please wait...");
-                LoadingBar.setCanceledOnTouchOutside(false);
-                LoadingBar.show();
+                  LoadingBar.setTitle("Already Logged in");
+                  LoadingBar.setMessage("Please wait...");
+                  LoadingBar.setCanceledOnTouchOutside(false);
+                  LoadingBar.show();
 
-            }
-        }
+              }
+          }
 
     }
 
@@ -77,20 +77,20 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Users usersData = snapshot.child("Users").child(phone).getValue(Users.class);
 
-                    if(usersData.getPhone().equals(phone)){
-                        if(usersData.getPassword().equals(password)){
-                            Toast.makeText(MainActivity.this,"you are already logged in...",Toast.LENGTH_SHORT).show();
-                            LoadingBar.dismiss();
-                            Intent intent = new Intent(MainActivity.this,HomeActivity.class);
-                            Prevalent.currentOnLineUser = usersData;
-                            startActivity(intent);
+                        if(usersData.getPhone().equals(phone)){
+                            if(usersData.getPassword().equals(password)){
+                                Toast.makeText(MainActivity.this,"you are already logged in...",Toast.LENGTH_SHORT).show();
+                                LoadingBar.dismiss();
+                                Intent intent = new Intent(MainActivity.this,HomeActivity.class);
+                            //    Prevalent.currentOnLineUser = usersData;
+                                startActivity(intent);
+                            }
+                            else
+                            {
+                                LoadingBar.dismiss();
+                                Toast.makeText(MainActivity.this,"Password is incorrect.",Toast.LENGTH_SHORT).show();
+                            }
                         }
-                        else
-                        {
-                            LoadingBar.dismiss();
-                            Toast.makeText(MainActivity.this,"Password is incorrect.",Toast.LENGTH_SHORT).show();
-                        }
-                    }
                 }
                 else
                 {
