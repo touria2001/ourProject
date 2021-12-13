@@ -59,17 +59,6 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/MyApplication4Projet (1)/MyApplication4/app/src/main/res/layout/nav_header_home.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/MyApplication4Projet (1)/MyApplication4/app/src/main/res/menu/activity_main_drawer.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/MyApplication4Projet (1)/MyApplication4/app/src/main/res/menu/home.xml" value="0.20416666666666666" />
-<<<<<<< HEAD
-        <entry key="..\:/Users/hp/Documents/GitHub/ourProject/MyApplication4/app/src/main/res/drawable/ic_baseline_about_24.xml" value="0.2203125" />
-        <entry key="..\:/Users/hp/Documents/GitHub/ourProject/MyApplication4/app/src/main/res/drawable/ic_baseline_message_24.xml" value="0.2203125" />
-        <entry key="..\:/Users/hp/Documents/GitHub/ourProject/MyApplication4/app/src/main/res/layout/activity_about_as.xml" value="0.1" />
-        <entry key="..\:/Users/hp/Documents/GitHub/ourProject/MyApplication4/app/src/main/res/layout/activity_admin_add_new_product.xml" value="0.33" />
-        <entry key="..\:/Users/hp/Documents/GitHub/ourProject/MyApplication4/app/src/main/res/layout/activity_bot_chat.xml" value="0.15353260869565216" />
-        <entry key="..\:/Users/hp/Documents/GitHub/ourProject/MyApplication4/app/src/main/res/layout/product_items_layout.xml" value="0.1" />
-        <entry key="..\:/Users/hp/Documents/GitHub/ourProject/MyApplication4/app/src/main/res/menu/activity_main_drawer.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/hp/Documents/GitHub/ourProject/MyApplication4/app/src/main/res/menu/home.xml" value="0.20416666666666666" />
-=======
->>>>>>> a235e3b189b14478c0906f1b405a62b8ce65831f
         <entry key="..\:/Users/smart hp/AndroidStudioProjects/MyApplication4/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2203125" />
         <entry key="..\:/Users/smart hp/AndroidStudioProjects/MyApplication4/app/src/main/res/drawable/buttons.xml" value="0.20625" />
         <entry key="..\:/Users/smart hp/AndroidStudioProjects/MyApplication4/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2203125" />
@@ -97,10 +86,12 @@
         <entry key="..\:/Users/touria/Desktop/MyApplication4/app/src/main/res/layout/product_items_layout.xml" value="0.1" />
         <entry key="..\:/Users/touria/Desktop/MyApplication4/app/src/main/res/menu/activity_main_drawer.xml" value="0.17743589743589744" />
         <entry key="..\:/Users/touria/Documents/GitHub/ourProject/MyApplication4/app/src/main/res/layout/activity_admin_add_new_product.xml" value="0.1" />
+        <entry key="..\:/Users/touria/Documents/GitHub/ourProject/MyApplication4/app/src/main/res/layout/activity_admin_category.xml" value="0.1" />
         <entry key="..\:/Users/touria/Documents/GitHub/ourProject/MyApplication4/app/src/main/res/layout/activity_chat.xml" value="0.16530797101449277" />
         <entry key="..\:/Users/touria/Documents/GitHub/ourProject/MyApplication4/app/src/main/res/layout/activity_home.xml" value="0.16530797101449277" />
         <entry key="..\:/Users/touria/Documents/GitHub/ourProject/MyApplication4/app/src/main/res/layout/activity_main2.xml" value="0.16530797101449277" />
         <entry key="..\:/Users/touria/Documents/GitHub/ourProject/MyApplication4/app/src/main/res/layout/activity_message.xml" value="0.16530797101449277" />
+        <entry key="..\:/Users/touria/Documents/GitHub/ourProject/MyApplication4/app/src/main/res/layout/activity_settins.xml" value="0.1" />
         <entry key="..\:/Users/touria/Downloads/halima/MyApplication4/app/src/main/res/layout/activity_about_as.xml" value="0.1" />
         <entry key="..\:/Users/touria/Downloads/halima/MyApplication4/app/src/main/res/layout/product_items_layout.xml" value="0.1" />
         <entry key="..\:/Users/touria/Downloads/halima/MyApplication4/app/src/main/res/menu/activity_main_drawer.xml" value="0.1" />

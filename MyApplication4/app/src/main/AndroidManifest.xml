@@ -3,6 +3,8 @@
     package="com.example.myapplication4">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -12,11 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication4">
         <activity
-<<<<<<< HEAD
             android:name=".BotChatActivity"
-=======
+            android:exported="false" />
+<activity
             android:name=".messageActivity"
->>>>>>> a235e3b189b14478c0906f1b405a62b8ce65831f
+
             android:exported="false" />
         <activity
             android:name=".AboutAsActivity"
@@ -39,6 +41,8 @@
         <activity
             android:name=".SettinsActivity"
             android:exported="false" />
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/>
         <activity
             android:name=".AdminAddNewProductActivity"
             android:exported="false" />
