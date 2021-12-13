@@ -64,7 +64,7 @@
      android:textStyle="bold|italic"
      android:paddingStart="15dp"
      />
- <EditText
+ <!--<EditText
      android:id="@+id/product_price"
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
@@ -76,14 +76,14 @@
      android:layout_marginLeft="45dp"
      android:layout_marginRight="45dp"
      android:background="@drawable/inputs_design"
-     />
+     />-->
 
 
  <Button
      android:id="@+id/add_new_product"
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
-     android:layout_below="@+id/product_price"
+     android:layout_below="@+id/product_description"
      android:layout_marginLeft="45dp"
      android:layout_marginTop="20dp"
      android:layout_marginRight="45dp"
