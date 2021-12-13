@@ -166,7 +166,7 @@ Button reserver;
                             holder.reserver.setBackgroundResource(R.color.gris);
                         }
                         else{
-                            holder.reserver.setBackgroundResource(R.color.white);
+                            holder.reserver.setBackgroundResource(R.color.green2);
                             if(model.getReserver().equals(getIntent().getExtras().get("loggedUser").toString())){
                                 holder.reserver.setText("annuler");}
                             else{
