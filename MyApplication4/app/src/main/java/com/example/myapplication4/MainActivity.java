@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this,"you are already logged in...",Toast.LENGTH_SHORT).show();
                             LoadingBar.dismiss();
                             Intent intent = new Intent(MainActivity.this,HomeActivity.class);
-
+                            Prevalent.currentOnLineUser = usersData;
                             startActivity(intent);
                         }
                         else
