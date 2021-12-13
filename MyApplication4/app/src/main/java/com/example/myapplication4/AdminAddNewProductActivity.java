@@ -62,7 +62,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         InputProductImage = (ImageView) findViewById(R.id.select_product_image);
         InputProductName = (EditText) findViewById(R.id.product_name);
         InputProductDescription = (EditText) findViewById(R.id.product_description);
-        InputProductPrice = (EditText) findViewById(R.id.product_price);
+        //InputProductPrice = (EditText) findViewById(R.id.product_price);
         loadingBar = new ProgressDialog(this);
 
 
@@ -108,7 +108,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
     private void ValidateProductData() {
         Description = InputProductDescription.getText().toString();
-        Price = InputProductPrice.getText().toString();
+     //   Price = InputProductPrice.getText().toString();
         Pname = InputProductName.getText().toString();
 
 
@@ -120,10 +120,10 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         {
             Toast.makeText(this, "Please write product description...", Toast.LENGTH_SHORT).show();
         }
-        else if (TextUtils.isEmpty(Price))
+      /*  else if (TextUtils.isEmpty(Price))
         {
             Toast.makeText(this, "Please write product Price...", Toast.LENGTH_SHORT).show();
-        }
+        }*/
         else if (TextUtils.isEmpty(Pname))
         {
             Toast.makeText(this, "Please write product name...", Toast.LENGTH_SHORT).show();
@@ -208,7 +208,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         productMap.put("description", Description);
         productMap.put("image", downloadImageUrl);
         productMap.put("category", CategoryName);
-        productMap.put("price", Price);
+       /// productMap.put("price", Price);
         productMap.put("pname", Pname);
         productMap.put("reserver","non");
         productMap.put("user", getIntent().getExtras().get("loggedUser").toString());

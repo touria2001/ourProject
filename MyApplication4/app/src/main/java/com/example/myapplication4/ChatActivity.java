@@ -1,7 +1,10 @@
 package com.example.myapplication4;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -36,6 +39,31 @@ public class ChatActivity extends AppCompatActivity {
         reference= FirebaseDatabase.getInstance().getReference("Users");
 
         reference.child(getIntent().getExtras().get("destinataire").toString()).child("message").setValue(messageSend.getText().toString());
+//        Intent intent = new Intent(this, HomeActivity.class);
+//        intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
+//        startActivity(intent);
 
+//        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+//        builder1.setMessage("Write your message here.");
+//        builder1.setCancelable(true);
+//
+//        builder1.setPositiveButton(
+//                "Yes",
+//                new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int id) {
+//                        dialog.cancel();
+//                    }
+//                });
+//
+//        builder1.setNegativeButton(
+//                "No",
+//                new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int id) {
+//                        dialog.cancel();
+//                    }
+//                });
+//
+//        AlertDialog alert11 = builder1.create();
+//        alert11.show();
     }
 }
