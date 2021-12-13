@@ -40,7 +40,8 @@
             android:layout_below="@+id/product_image"
             android:text=" "
             android:textAlignment="center"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:onClick="parler"/>
 
         <TextView
             android:id="@+id/product_description"

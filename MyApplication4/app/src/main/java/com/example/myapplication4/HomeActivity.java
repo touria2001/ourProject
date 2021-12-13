@@ -53,7 +53,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private ActivityHomeBinding binding;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-
+    String destinataire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,8 +112,8 @@ Button reserver;
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
-                        holder.txtProductPrice.setText(Html.fromHtml("<a href=\"mailto:"+model.getPrice()+"\">"+model.getPrice()+"</a>"));
-                        holder.txtProductPrice.setMovementMethod(LinkMovementMethod.getInstance());
+                        holder.txtProductPrice.setText("contacter : "+model.getUser());
+                        destinataire=model.getUser();
                        // holder.txtProductName.setText(model.getPname());
                         holder.txtProductDescription.setText("ville : "+model.getDescription());
 
@@ -249,7 +249,9 @@ adapter.startListening();
 
         if (id == R.id.contact_admin)
         {
-            Intent intent = new Intent(HomeActivity.this,ChatActivity.class);
+            Intent intent = new Intent(this, messageActivity.class);
+            intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
+
             startActivity(intent);
         }
         else if (id == R.id.nav_settings)
@@ -286,11 +288,11 @@ adapter.startListening();
         startActivity(intent);
     }
 
-    public void reserver(View view) {
-
-        view.setBackgroundResource(R.color.black);
-
+    public void parler(View view){
+        Intent intent = new Intent(this, ChatActivity.class);
+        intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
+        intent.putExtra("destinataire",destinataire );
+        startActivity(intent);
     }
-
 
 }
