@@ -149,15 +149,37 @@ Button reserver;
                             @Override
                             public void onClick(View view) {
                                 Map<String, Object> updateReservation = new HashMap<String,Object>();
-                                updateReservation.put("reserver", "oui");
-                                ProductsRef.child(holder.pid).updateChildren(updateReservation);
+                                if(model.getReserver().equals("non")){
+                                    updateReservation.put("reserver", getIntent().getExtras().get("loggedUser").toString());
+                                    ProductsRef.child(holder.pid).updateChildren(updateReservation);
+                                }
+                                else{
+                                    if(model.getReserver().equals(getIntent().getExtras().get("loggedUser").toString()))  {
+
+                                        updateReservation.put("reserver", "non");
+                                        ProductsRef.child(holder.pid).updateChildren(updateReservation);
+
+                                    }}
                             }
                         });
-                        Picasso.get().load(model.getImage()).into(holder.imageView);
                         if(model.getReserver().equals("non")){
-                            holder.reserver.setBackgroundResource(R.color.white);
+                            holder.reserver.setBackgroundResource(R.color.gris);
                         }
-                        else { holder.reserver.setBackgroundResource(R.color.black);}
+                        else{
+                            holder.reserver.setBackgroundResource(R.color.white);
+                            if(model.getReserver().equals(getIntent().getExtras().get("loggedUser").toString())){
+                                holder.reserver.setText("annuler");}
+                            else{
+                                holder.reserver.setText("deja reserver");
+                            }
+                        }
+
+                        Picasso.get().load(model.getImage()).into(holder.imageView);
+
+//                        if(model.getReserver().equals("non")){
+//                            holder.reserver.setBackgroundResource(R.color.white);
+//                        }
+//                        else { holder.reserver.setBackgroundResource(R.color.black);}
 
 
 
