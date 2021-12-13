@@ -62,7 +62,6 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         InputProductImage = (ImageView) findViewById(R.id.select_product_image);
         InputProductName = (EditText) findViewById(R.id.product_name);
         InputProductDescription = (EditText) findViewById(R.id.product_description);
-        InputProductPrice = (EditText) findViewById(R.id.product_price);
         loadingBar = new ProgressDialog(this);
 
 
@@ -120,10 +119,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         {
             Toast.makeText(this, "Please write product description...", Toast.LENGTH_SHORT).show();
         }
-        else if (TextUtils.isEmpty(Price))
-        {
-            Toast.makeText(this, "Please write product Price...", Toast.LENGTH_SHORT).show();
-        }
+
         else if (TextUtils.isEmpty(Pname))
         {
             Toast.makeText(this, "Please write product name...", Toast.LENGTH_SHORT).show();
@@ -136,7 +132,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
     private void StoreProductInformation() {
         loadingBar.setTitle("Add New Product");
-        loadingBar.setMessage("Dear Admin, please wait while we are adding the new product.");
+        loadingBar.setMessage("Dear , please wait while we are adding this....");
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 
