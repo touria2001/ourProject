@@ -12,7 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication4">
         <activity
+<<<<<<< HEAD
+            android:name=".BotChatActivity"
+=======
             android:name=".messageActivity"
+>>>>>>> a235e3b189b14478c0906f1b405a62b8ce65831f
             android:exported="false" />
         <activity
             android:name=".AboutAsActivity"
