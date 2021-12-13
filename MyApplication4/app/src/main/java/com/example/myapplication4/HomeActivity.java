@@ -49,7 +49,7 @@ import Prevalent.Prevalent;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
 
-public class HomeActivity extends AppCompatActivity  {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DatabaseReference ProductsRef;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHomeBinding binding;
@@ -82,6 +82,8 @@ public class HomeActivity extends AppCompatActivity  {
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
+        navigationView.setNavigationItemSelectedListener(this);
+
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -216,6 +218,44 @@ public class HomeActivity extends AppCompatActivity  {
         return super.onOptionsItemSelected(item);
     }
     @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item)
+    {
+
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.contact_admin)
+        {
+            Intent intent = new Intent(HomeActivity.this,ChatActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_settings)
+        {
+
+            Intent intent = new Intent(HomeActivity.this, SettinsActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_about_as)
+        {
+
+            Intent intent = new Intent(HomeActivity.this, AboutAsActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_logout)
+        {
+            Paper.book().destroy();
+
+            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 
 
 

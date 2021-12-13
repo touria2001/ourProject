@@ -15,7 +15,7 @@
         <item
             android:id="@+id/nav_about_as"
             android:icon="@drawable/ic_baseline_about_24"
-            android:title="About As"
+            android:title="About Us"
             android:onClick="onNavigationItemSelected"
             android:iconTint="@android:color/holo_green_light"
             />
@@ -26,7 +26,7 @@
             android:iconTint="@android:color/holo_green_light"
             android:onClick="onNavigationItemSelected"
             />
-        />
+
 
     </group>
 </menu>

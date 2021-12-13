@@ -14,9 +14,9 @@ public class SettinsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settins);
-         closeTxtView = (TextView) findViewById(R.id.close_settings_btn);
-         updateTxtView = (TextView) findViewById(R.id.update_account_settings_btn);
-         closeTxtView.setOnClickListener(new View.OnClickListener() {
+        closeTxtView = (TextView) findViewById(R.id.close_settings_btn);
+        updateTxtView = (TextView) findViewById(R.id.update_account_settings_btn);
+        closeTxtView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SettinsActivity.this,HomeActivity.class);
