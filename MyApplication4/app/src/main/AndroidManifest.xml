@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication4">
         <activity
+            android:name=".BotChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".AboutAsActivity"
             android:exported="false" />
         <activity

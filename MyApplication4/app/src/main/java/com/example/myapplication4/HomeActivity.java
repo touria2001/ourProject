@@ -242,7 +242,7 @@ adapter.startListening();
     @Override
     public boolean onNavigationItemSelected(MenuItem item)
     {
-
+        Log.d("myTag", "This is my messageeeeeeeeeeeeeeeeeee");
 
         // Handle navigation view item clicks here.
         int id = item.getItemId();
@@ -262,6 +262,12 @@ adapter.startListening();
         {
 
             Intent intent = new Intent(HomeActivity.this, AboutAsActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.contact_as)
+        {
+
+            Intent intent = new Intent(HomeActivity.this, BotChatActivity.class);
             startActivity(intent);
         }
         else if (id == R.id.nav_logout)
