@@ -158,7 +158,7 @@ public class HomeActivity extends AppCompatActivity  {
                         if(model.getReserver().equals("non")){
                             holder.reserver.setBackgroundResource(R.color.white);
                         }
-                        else { holder.reserver.setBackgroundResource(R.color.black);}
+                        else { holder.reserver.setBackgroundResource(R.color.green2);}
 
 
                     }
