@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -36,34 +37,36 @@ public class ChatActivity extends AppCompatActivity {
 //    }
 
     public void chat(View view) {
-        reference= FirebaseDatabase.getInstance().getReference("Users");
+        AlertDialog.Builder alert =new AlertDialog.Builder(this);
+        alert.setMessage("do you want to send the message? ");
+        alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                reference= FirebaseDatabase.getInstance().getReference("Users");
 
-        reference.child(getIntent().getExtras().get("destinataire").toString()).child("message").setValue(messageSend.getText().toString());
-//        Intent intent = new Intent(this, HomeActivity.class);
-//        intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
-//        startActivity(intent);
+                reference.child(getIntent().getExtras().get("destinataire").toString()).child("message").setValue(messageSend.getText().toString());
 
-//        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-//        builder1.setMessage("Write your message here.");
-//        builder1.setCancelable(true);
-//
-//        builder1.setPositiveButton(
-//                "Yes",
-//                new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        dialog.cancel();
-//                    }
-//                });
-//
-//        builder1.setNegativeButton(
-//                "No",
-//                new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        dialog.cancel();
-//                    }
-//                });
-//
-//        AlertDialog alert11 = builder1.create();
-//        alert11.show();
+                Toast.makeText(ChatActivity.this, "Message has been sent", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ChatActivity.this,HomeActivity.class);
+                intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
+                startActivity(intent);
+          }
+        });
+        alert.setNegativeButton("no", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                Toast.makeText(ChatActivity.this, "Messge was not sent", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ChatActivity.this, HomeActivity.class);
+                intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
+
+                startActivity(intent);
+
+            }
+        });
+
+        alert.create().show();
+
+
+
     }
 }
