@@ -171,7 +171,7 @@ Button reserver;
                             if(model.getReserver().equals(getIntent().getExtras().get("loggedUser").toString())){
                                 holder.reserver.setText("annuler");}
                             else{
-                                holder.reserver.setText("deja reserver");
+                                holder.reserver.setText("reserved");
                             }
                         }
 
