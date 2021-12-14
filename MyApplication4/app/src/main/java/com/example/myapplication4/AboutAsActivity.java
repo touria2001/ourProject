@@ -19,6 +19,7 @@ public class AboutAsActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(AboutAsActivity.this,HomeActivity.class);
+                intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
                 startActivity(intent);
 
             }

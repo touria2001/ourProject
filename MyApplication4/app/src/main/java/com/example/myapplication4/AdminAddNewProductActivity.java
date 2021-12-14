@@ -143,8 +143,6 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         saveCurrentTime = currentTime.format(calendar.getTime());
 
         productRandomKey = saveCurrentDate + saveCurrentTime;
-        Log.d("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",productRandomKey);
-
         final StorageReference filePath = ProductImagesRef.child(ImageUri.getLastPathSegment() + productRandomKey + ".jpg");
 
         final UploadTask uploadTask = filePath.putFile(ImageUri);
@@ -215,6 +213,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
                         if (task.isSuccessful())
                         {
                             Intent intent = new Intent(AdminAddNewProductActivity.this, AdminCategoryActivity.class);
+                            intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
                             startActivity(intent);
 
                             loadingBar.dismiss();
