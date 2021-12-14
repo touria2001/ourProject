@@ -21,6 +21,7 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         messageSend=(EditText) findViewById(R.id.messagesend);
+      //  messageSend.setText(getIntent().getExtras().get("destinataire").toString());
         // getIntent().getExtras().get("loggedUser").toString();
      //   messageSend.setText(getIntent().getExtras().get("destinataire").toString());
 //        reference= FirebaseDatabase.getInstance().getReference("Users");
@@ -42,11 +43,10 @@ public class ChatActivity extends AppCompatActivity {
         alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
-                reference= FirebaseDatabase.getInstance().getReference("Users");
+               reference= FirebaseDatabase.getInstance().getReference("Users");
 
-                reference.child(getIntent().getExtras().get("destinataire").toString()).child("message").setValue(messageSend.getText().toString());
-
-                Toast.makeText(ChatActivity.this, "Message has been sent", Toast.LENGTH_SHORT).show();
+               reference.child(getIntent().getExtras().get("destinataire").toString()).child("message").setValue(messageSend.getText().toString());
+          Toast.makeText(ChatActivity.this, "Message has been sent", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(ChatActivity.this,HomeActivity.class);
                 intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
                 startActivity(intent);
