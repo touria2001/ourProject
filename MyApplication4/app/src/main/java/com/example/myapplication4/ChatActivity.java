@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,9 +14,14 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+
 public class ChatActivity extends AppCompatActivity {
     EditText messageSend;
     DatabaseReference reference;
+    private String saveCurrentDate, saveCurrentTime,productRandomKey;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +49,32 @@ public class ChatActivity extends AppCompatActivity {
         alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
-               reference= FirebaseDatabase.getInstance().getReference("Users");
+               reference= FirebaseDatabase.getInstance().getReference("messages");
+                Calendar calendar = Calendar.getInstance();
 
-               reference.child(getIntent().getExtras().get("destinataire").toString()).child("message").setValue(messageSend.getText().toString());
+                SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+                saveCurrentDate = currentDate.format(calendar.getTime());
+
+                SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+                saveCurrentTime = currentTime.format(calendar.getTime());
+               // myStr.replace('l', 'p')
+                        String m=saveCurrentDate + saveCurrentTime;
+                productRandomKey = m.replace(".",",");
+             Log.d("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",productRandomKey);
+            //  reference.child(getIntent().getExtras().get("destinataire").toString()).child("messages").child("hh").child("message").setValue(messageSend.getText().toString());
+//                reference.child(getIntent().getExtras().get("destinataire").toString()).child("messages").child( "hh").child("user").setValue(getIntent().getExtras().get("loggedUser").toString());
+//                reference.child(getIntent().getExtras().get("destinataire").toString()).child("messages").child( "hh").child("destinataire").setValue(getIntent().getExtras().get("destinataire").toString());
+
+                HashMap<String, Object> productMap = new HashMap<>();
+                productMap.put("message", messageSend.getText().toString());
+//                productMap.put("date", saveCurrentDate);
+//                productMap.put("time", saveCurrentTime);
+                productMap.put("user", getIntent().getExtras().get("loggedUser").toString());
+                productMap.put("destinataire", getIntent().getExtras().get("destinataire").toString());
+                String name=getIntent().getExtras().get("loggedUser").toString()+getIntent().getExtras().get("destinataire").toString();
+               reference.child(name).child(productRandomKey).updateChildren(productMap);
+                //reference.child(getIntent().getExtras().get("destinataire").toString()).child("messages").child("hhh2").updateChildren(productMap);
+
           Toast.makeText(ChatActivity.this, "Message has been sent", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(ChatActivity.this,HomeActivity.class);
                 intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
