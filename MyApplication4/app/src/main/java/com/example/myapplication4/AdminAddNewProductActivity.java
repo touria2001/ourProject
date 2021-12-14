@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -149,6 +150,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         saveCurrentTime = currentTime.format(calendar.getTime());
 
         productRandomKey = saveCurrentDate + saveCurrentTime;
+        
 
 
         final StorageReference filePath = ProductImagesRef.child(ImageUri.getLastPathSegment() + productRandomKey + ".jpg");
