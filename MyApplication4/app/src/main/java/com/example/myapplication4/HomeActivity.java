@@ -113,7 +113,7 @@ Button reserver;
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
-                        holder.txtProductPrice.setText("contacter : "+model.getUser());
+                        holder.txtProductPrice.setText("contacter  ");
                         destinataire=model.getUser();
                        // holder.txtProductName.setText(model.getPname());
                         holder.txtProductDescription.setText("ville : "+model.getDescription());
