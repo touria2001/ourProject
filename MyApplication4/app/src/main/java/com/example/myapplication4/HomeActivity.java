@@ -167,10 +167,11 @@ Button reserver;
                             holder.reserver.setBackgroundResource(R.color.green3);
                         }
                         else{
-                            holder.reserver.setBackgroundResource(R.color.green2);
+                            holder.reserver.setBackgroundResource(R.color.gris);
                             if(model.getReserver().equals(getIntent().getExtras().get("loggedUser").toString())){
                                 holder.reserver.setText("cancel");}
                             else{
+                                holder.reserver.setBackgroundResource(R.color.red);
                                 holder.reserver.setText("reserved");
                             }
                         }
@@ -278,7 +279,7 @@ adapter.startListening();
         {
             Paper.book().destroy();
 
-            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+            Intent intent = new Intent(HomeActivity.this, AnimationLoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
