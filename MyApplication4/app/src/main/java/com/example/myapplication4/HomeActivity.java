@@ -167,10 +167,11 @@ Button reserver;
                             holder.reserver.setBackgroundResource(R.color.green3);
                         }
                         else{
-                            holder.reserver.setBackgroundResource(R.color.green2);
+                            holder.reserver.setBackgroundResource(R.color.gris);
                             if(model.getReserver().equals(getIntent().getExtras().get("loggedUser").toString())){
                                 holder.reserver.setText("cancel");}
                             else{
+                                holder.reserver.setBackgroundResource(R.color.red);
                                 holder.reserver.setText("reserved");
                             }
                         }
