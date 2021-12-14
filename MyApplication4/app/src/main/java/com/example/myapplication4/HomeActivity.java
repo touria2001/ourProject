@@ -94,6 +94,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
         userNameTextView.setText(Prevalent.currentOnLineUser.getName());
+        Picasso.get().load(Prevalent.currentOnLineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
 
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
@@ -166,7 +167,7 @@ Button reserver;
                             holder.reserver.setBackgroundResource(R.color.gris);
                         }
                         else{
-                            holder.reserver.setBackgroundResource(R.color.white);
+                            holder.reserver.setBackgroundResource(R.color.green2);
                             if(model.getReserver().equals(getIntent().getExtras().get("loggedUser").toString())){
                                 holder.reserver.setText("annuler");}
                             else{
@@ -258,6 +259,7 @@ adapter.startListening();
         {
 
             Intent intent = new Intent(HomeActivity.this, SettinsActivity.class);
+            intent.putExtra("loggedUser", Prevalent.currentOnLineUser.getPhone());
             startActivity(intent);
         }
         else if (id == R.id.nav_about_as)
