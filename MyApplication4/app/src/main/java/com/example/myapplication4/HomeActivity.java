@@ -279,7 +279,7 @@ adapter.startListening();
         {
             Paper.book().destroy();
 
-            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+            Intent intent = new Intent(HomeActivity.this, AnimationLoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
