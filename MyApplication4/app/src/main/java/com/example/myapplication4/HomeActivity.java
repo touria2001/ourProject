@@ -164,12 +164,12 @@ Button reserver;
                             }
                         });
                         if(model.getReserver().equals("non")){
-                            holder.reserver.setBackgroundResource(R.color.gris);
+                            holder.reserver.setBackgroundResource(R.color.green3);
                         }
                         else{
                             holder.reserver.setBackgroundResource(R.color.green2);
                             if(model.getReserver().equals(getIntent().getExtras().get("loggedUser").toString())){
-                                holder.reserver.setText("annuler");}
+                                holder.reserver.setText("cancel");}
                             else{
                                 holder.reserver.setText("reserved");
                             }
