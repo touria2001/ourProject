@@ -12,7 +12,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
     private ImageView tShirts, sportsTShirts, femaleDresses, sweathers;
     private ImageView glasses, hatsCaps, walletsBagsPurses, shoes;
     private ImageView headPhonesHandFree, Laptops, watches, mobilPhones;
-   // private Button cancelBtn;
+   private Button cancelBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,15 +33,17 @@ public class AdminCategoryActivity extends AppCompatActivity {
         watches = (ImageView) findViewById(R.id.watches);
         mobilPhones=(ImageView)findViewById(R.id.mobilesphones);
 
-       /* cancelBtn =(Button) findViewById(R.id.btn_close) ;
+        cancelBtn =(Button) findViewById(R.id.btn_close) ;
 
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdminCategoryActivity.this,HomeActivity.class);
+                intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
+
                 startActivity(intent);
             }
-        });*/
+        });
 
         tShirts.setOnClickListener(new View.OnClickListener() {
             @Override
