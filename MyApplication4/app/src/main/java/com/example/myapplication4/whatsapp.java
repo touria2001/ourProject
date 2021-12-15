@@ -50,6 +50,7 @@ public class whatsapp extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<MessageUser, MessageUserViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull MessageUserViewHolder holder, int position, @NonNull MessageUser model) {
+                      
                         holder.ourMsg.setText(model.getMessage());
 
 
