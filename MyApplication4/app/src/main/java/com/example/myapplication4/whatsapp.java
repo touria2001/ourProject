@@ -72,6 +72,8 @@ public class whatsapp extends AppCompatActivity {
                         } else if (model.getDestinataire().equals(getIntent().getExtras().get("loggedUser").toString()) && model.getUser().equals(getIntent().getExtras().get("ourUserActuel").toString())){
                             holder.ourMsg.setText(model.getMessage());
                             holder.ourMsg.setGravity(Gravity.RIGHT);
+                            holder.ourMsg.setBackgroundResource(R.color.bleu);
+
                         }else {
                             holder.ourMsg.setVisibility(View.GONE);
                         }
