@@ -71,8 +71,8 @@ public class ChatActivity extends AppCompatActivity {
 //                productMap.put("time", saveCurrentTime);
                 productMap.put("user", getIntent().getExtras().get("loggedUser").toString());
                 productMap.put("destinataire", getIntent().getExtras().get("destinataire").toString());
-                String name=getIntent().getExtras().get("loggedUser").toString()+getIntent().getExtras().get("destinataire").toString();
-               reference.child(name).child(productRandomKey).updateChildren(productMap);
+               
+               reference.child(productRandomKey).updateChildren(productMap);
                 //reference.child(getIntent().getExtras().get("destinataire").toString()).child("messages").child("hhh2").updateChildren(productMap);
 
           Toast.makeText(ChatActivity.this, "Message has been sent", Toast.LENGTH_SHORT).show();
