@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,10 +25,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import Model.Products;
 import Model.message;
+import Prevalent.Prevalent;
 
 public class messageActivity extends AppCompatActivity {
     private DatabaseReference MessagesRef;
-
+private String ourUserActuel;
     TextView ourUser;
     //  TextView messageRecu;
     DatabaseReference reference;
@@ -76,6 +78,7 @@ public class messageActivity extends AppCompatActivity {
                     protected void onBindViewHolder(@NonNull MessageViewHolder holder, int position, @NonNull message model) {
 
                         holder.ourUser.setText(model.getPhone());
+                        ourUserActuel = model.getPhone();
 
                     }
 
@@ -87,12 +90,17 @@ public class messageActivity extends AppCompatActivity {
                         return holder;
                     }};
 
-//    public void repondre(View view) {
-//    }
+
         recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
+    public void chater(View view) {
+        Intent intent = new Intent(messageActivity.this, whatsapp.class);
+        intent.putExtra("loggedUser", Prevalent.currentOnLineUser.getPhone());
+        intent.putExtra("ourUserActuel",ourUserActuel );
 
+        startActivity(intent);
+    }
 
 
 }
