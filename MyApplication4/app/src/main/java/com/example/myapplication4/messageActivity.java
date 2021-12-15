@@ -95,9 +95,12 @@ private String ourUserActuel;
         adapter.startListening();
     }
     public void chater(View view) {
+        TextView b = (TextView) view;
+        String Text = b.getText().toString();
         Intent intent = new Intent(messageActivity.this, whatsapp.class);
         intent.putExtra("loggedUser", Prevalent.currentOnLineUser.getPhone());
-        intent.putExtra("ourUserActuel",ourUserActuel );
+        intent.putExtra("ourUserActuel",Text);
+
 
         startActivity(intent);
     }

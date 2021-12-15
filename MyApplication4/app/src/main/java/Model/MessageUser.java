@@ -2,6 +2,9 @@ package Model;
 
 public class MessageUser {
     private String message;
+    public MessageUser() {
+
+    }
 
     public MessageUser(String message) {
         this.message = message;

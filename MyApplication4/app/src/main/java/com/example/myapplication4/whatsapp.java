@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +29,11 @@ public class whatsapp extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_whatsapp);
-        MessagesRef = FirebaseDatabase.getInstance().getReference().child("messages");
+
+        MessagesRef = FirebaseDatabase.getInstance().getReference().child("messages").child(getIntent().getExtras().get("loggedUser").toString()+getIntent().getExtras().get("ourUserActuel").toString());
         recyclerView = findViewById(R.id.recycler_menuWhatsapp);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -47,8 +50,7 @@ public class whatsapp extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<MessageUser, MessageUserViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull MessageUserViewHolder holder, int position, @NonNull MessageUser model) {
-
-                        holder.ourMsg.setText("model.getMessage()");
+                        holder.ourMsg.setText(model.getMessage());
 
 
                     }
@@ -56,7 +58,7 @@ public class whatsapp extends AppCompatActivity {
                     @NonNull
                     @Override
                     public MessageUserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat, parent, false);
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_discusion, parent, false);
                         MessageUserViewHolder holder = new MessageUserViewHolder(view);
                         return holder;
                     }};
