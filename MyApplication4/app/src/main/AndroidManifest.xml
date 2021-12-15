@@ -3,8 +3,8 @@
     package="com.example.myapplication4">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,12 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication4">
         <activity
+            android:name=".whatsapp"
+            android:exported="false" />
+        <activity
             android:name=".BotChatActivity"
             android:exported="false" />
         <activity
             android:name=".messageActivity"
             android:exported="false" />
-
         <activity
             android:name=".AboutAsActivity"
             android:exported="false" />
@@ -41,8 +43,9 @@
         <activity
             android:name=".SettinsActivity"
             android:exported="false" />
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/>
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
         <activity
             android:name=".AdminAddNewProductActivity"
             android:exported="false" />
