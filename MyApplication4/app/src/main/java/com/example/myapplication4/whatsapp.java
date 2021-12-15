@@ -47,7 +47,7 @@ public class whatsapp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_whatsapp);
          ourText = (TextView) findViewById(R.id.ourMsg);
-        MessagesRef = (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("messages").child("déc, 15, 202120:43:49 p,m,").equalTo("destinataire","123");
+        MessagesRef = (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("messages");
         recyclerView = findViewById(R.id.recycler_menuWhatsapp);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -66,17 +66,16 @@ public class whatsapp extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<MessageUser, MessageUserViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull MessageUserViewHolder holder, int position, @NonNull MessageUser model) {
-//                        if(model.getDestinataire().equals(getIntent().getExtras().get("ourUserActuel").toString()) && model.getUser().equals(getIntent().getExtras().get("loggedUser").toString()))
-//                        {
-//                            holder.ourMsg.setText(model.getMessage());
-//                        } else if (model.getDestinataire().equals(getIntent().getExtras().get("loggedUser").toString()) && model.getUser().equals(getIntent().getExtras().get("ourUserActuel").toString())){
-//                            holder.ourMsg.setText(model.getMessage());
-//                            holder.ourMsg.setGravity(Gravity.RIGHT);
-//                        }else {
-//                            holder.ourMsg.setVisibility(View.GONE);
-//                        }
-                        Log.d("fffffffffffffffffffffffffffffff", String.valueOf(MessagesRef));
-                        holder.ourMsg.setText(model.getMessage());
+                        if(model.getDestinataire().equals(getIntent().getExtras().get("ourUserActuel").toString()) && model.getUser().equals(getIntent().getExtras().get("loggedUser").toString()))
+                        {
+                            holder.ourMsg.setText(model.getMessage());
+                        } else if (model.getDestinataire().equals(getIntent().getExtras().get("loggedUser").toString()) && model.getUser().equals(getIntent().getExtras().get("ourUserActuel").toString())){
+                            holder.ourMsg.setText(model.getMessage());
+                            holder.ourMsg.setGravity(Gravity.RIGHT);
+                        }else {
+                            holder.ourMsg.setVisibility(View.GONE);
+                        }
+
 
 
 
