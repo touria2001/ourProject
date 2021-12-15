@@ -34,31 +34,48 @@
             android:innerRadius="10dp"
             android:scaleType="centerCrop"
             android:shape="ring" />
-           <TextView
-            android:id="@+id/product_price"
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/product_image"
             android:gravity="center"
-               android:layout_below="@+id/product_image"
-            android:text="num "
-            android:textAlignment="center"
-            android:textSize="18dp"
             android:onClick="parler"
+            android:text="send a message "
+            android:visibility="visible"
+            android:textAlignment="center"
+            android:textColor="@color/likeWhite"
+            android:background="@drawable/buttons"
+            android:layout_marginStart="88dp"
+            android:layout_marginEnd="88dp"
 
-            android:textColor="@color/bleu"
+            android:textSize="18dp"
 
             />
 
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/product_image"
+            android:gravity="center"
+            android:onClick="parler"
+            android:text="num "
+            android:visibility="invisible"
+            android:textAlignment="center"
+            android:textColor="@color/bleu"
+            android:background="@drawable/buttons"
+            android:layout_marginStart="88dp"
+            android:layout_marginEnd="88dp"
+            android:textSize="18dp"
+            />
 
-            
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-
             android:id="@+id/l2"
             android:layout_below="@+id/product_price"
-
             android:gravity="center"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="10dp">
@@ -71,6 +88,7 @@
             android:id="@+id/product_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="visible"
             android:text="Product Description"
             android:textAlignment="center"
             android:textColor="@color/bleu2"
@@ -92,7 +110,6 @@
             android:textAlignment="center"
             android:textColor="@color/likeWhite"
             android:textSize="16dp"
-
             android:textStyle="italic|bold" />
 
 
