@@ -87,10 +87,7 @@
             android:id="@+id/product_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:visibility="visible"
-=======
->>>>>>> 3006e10fb816395a056a4d7e3145042f860d49cd
             android:text="Product Description"
             android:textAlignment="center"
             android:textColor="@color/bleu2"
