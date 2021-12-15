@@ -35,7 +35,7 @@ public class whatsapp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_whatsapp);
          ourText = (TextView) findViewById(R.id.ourMsg);
-        MessagesRef = FirebaseDatabase.getInstance().getReference().child("messages").child(getIntent().getExtras().get("loggedUser").toString()+getIntent().getExtras().get("ourUserActuel").toString());
+        MessagesRef = FirebaseDatabase.getInstance().getReference().child("messages");
         recyclerView = findViewById(R.id.recycler_menuWhatsapp);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -58,6 +58,8 @@ public class whatsapp extends AppCompatActivity {
                         } else if (model.getDestinataire().equals(getIntent().getExtras().get("loggedUser").toString()) && model.getUser().equals(getIntent().getExtras().get("ourUserActuel").toString())){
                             holder.ourMsg.setText(model.getMessage());
                             holder.ourMsg.setGravity(Gravity.RIGHT);
+                        }else {
+                            holder.ourMsg.setVisibility(View.GONE);
                         }
 
 
