@@ -31,7 +31,7 @@ public class messageActivity extends AppCompatActivity {
     private DatabaseReference MessagesRef;
 private String ourUserActuel;
     TextView ourUser;
-    //  TextView messageRecu;
+
     DatabaseReference reference;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;

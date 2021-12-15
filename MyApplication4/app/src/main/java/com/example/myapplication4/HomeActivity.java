@@ -305,9 +305,15 @@ adapter.startListening();
         TextView b=(TextView) view;
 String d=b.getText().toString();
 
-        Intent intent = new Intent(this, ChatActivity.class);
+     //  Intent intent = new Intent(this, ChatActivity.class);
+//        intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
+//        intent.putExtra("destinataire",d);
+//        startActivity(intent);
+        Intent intent = new Intent(this, whatsapp.class);
         intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
-        intent.putExtra("destinataire",d);
+        intent.putExtra("ourUserActuel",d);
+
+
         startActivity(intent);
     }
 
