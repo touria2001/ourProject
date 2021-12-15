@@ -244,7 +244,7 @@ adapter.startListening();
     @Override
     public boolean onNavigationItemSelected(MenuItem item)
     {
-        Log.d("myTag", "This is my messageeeeeeeeeeeeeeeeeee");
+
 
         // Handle navigation view item clicks here.
         int id = item.getItemId();
