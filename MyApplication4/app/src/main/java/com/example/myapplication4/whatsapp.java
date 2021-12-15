@@ -52,10 +52,10 @@ public class whatsapp extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<MessageUser, MessageUserViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull MessageUserViewHolder holder, int position, @NonNull MessageUser model) {
-                        if(model.getDestinataire().equals(getIntent().getExtras().get("ourUserActuel").toString()))
+                        if(model.getDestinataire().equals(getIntent().getExtras().get("ourUserActuel").toString()) && model.getUser().equals(getIntent().getExtras().get("loggedUser").toString()))
                         {
                             holder.ourMsg.setText(model.getMessage());
-                        } else {
+                        } else if (model.getDestinataire().equals(getIntent().getExtras().get("loggedUser").toString()) && model.getUser().equals(getIntent().getExtras().get("ourUserActuel").toString())){
                             holder.ourMsg.setText(model.getMessage());
                             holder.ourMsg.setGravity(Gravity.RIGHT);
                         }
