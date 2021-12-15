@@ -73,7 +73,8 @@
             android:text="remember me"
             android:textColor="@color/likeWhite"
             android:textSize="13dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:buttonTint="@color/green1"/>
 
         <TextView
             android:id="@+id/forget_password_link"
