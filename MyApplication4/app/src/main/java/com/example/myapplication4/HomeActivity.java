@@ -267,12 +267,14 @@ adapter.startListening();
         {
 
             Intent intent = new Intent(HomeActivity.this, AboutAsActivity.class);
+            intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
             startActivity(intent);
         }
         else if (id == R.id.contact_as)
         {
 
             Intent intent = new Intent(HomeActivity.this, BotChatActivity.class);
+            intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
             startActivity(intent);
         }
         else if (id == R.id.nav_logout)
@@ -280,6 +282,7 @@ adapter.startListening();
             Paper.book().destroy();
 
             Intent intent = new Intent(HomeActivity.this, AnimationLoginActivity.class);
+
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
