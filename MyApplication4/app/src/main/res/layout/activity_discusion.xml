@@ -18,6 +18,11 @@
 
 
             />
+        <View
+            android:layout_below="@id/ourMsg"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#c0c0c0"/>
 
 
 
