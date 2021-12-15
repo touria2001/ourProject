@@ -15,5 +15,46 @@
 
         ></androidx.recyclerview.widget.RecyclerView>
 
+    <EditText
+        android:id="@+id/messagesend"
+        android:layout_width="376dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/recycler_menuWhatsapp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="224dp"
+        android:layout_marginEnd="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/send"
+        android:layout_width="380dp"
+        android:layout_height="77dp"
+        android:layout_below="@+id/messagesend"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="339dp"
+        android:background="@drawable/buttons"
+        android:onClick="chat"
+        android:padding="20dp"
+        android:text="send"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </RelativeLayout>

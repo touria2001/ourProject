@@ -20,7 +20,8 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:background="@color/white"
-            android:src="@drawable/ic_baseline_delete_forever_24" />
+            android:src="@drawable/ic_baseline_delete_forever_24"
+            android:layout_margin="10dp"/>
 
 
         <ImageView
