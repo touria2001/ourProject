@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,7 +33,7 @@ import java.util.HashMap;
 public class AdminAddNewProductActivity extends AppCompatActivity {
     private FirebaseStorage storage = FirebaseStorage.getInstance();
 
-    private String CategoryName,Description, Price, Pname, saveCurrentDate, saveCurrentTime;
+    private String CategoryName,Description, Price, Pname,saveCurrentDate, saveCurrentTime;
     private Button AddNewProductButton;
     private ImageView InputProductImage;
     private EditText InputProductName, InputProductDescription, InputProductPrice;
@@ -54,15 +55,11 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         CategoryName = getIntent().getExtras().get("category").toString();
         ProductImagesRef = FirebaseStorage.getInstance().getReference().child("Product Images");
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
-
-
-
-
         AddNewProductButton = (Button) findViewById(R.id.add_new_product);
         InputProductImage = (ImageView) findViewById(R.id.select_product_image);
         InputProductName = (EditText) findViewById(R.id.product_name);
         InputProductDescription = (EditText) findViewById(R.id.product_description);
-        InputProductPrice = (EditText) findViewById(R.id.product_price);
+       // InputProductPrice = (EditText) findViewById(R.id.product_price);
         loadingBar = new ProgressDialog(this);
 
 
@@ -73,10 +70,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
                 OpenGallery();
             }
-
-
-
-        });
+         });
 
         AddNewProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +102,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
     private void ValidateProductData() {
         Description = InputProductDescription.getText().toString();
-        Price = InputProductPrice.getText().toString();
+      //  Price = InputProductPrice.getText().toString();
         Pname = InputProductName.getText().toString();
 
 
@@ -120,10 +114,10 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         {
             Toast.makeText(this, "Please write product description...", Toast.LENGTH_SHORT).show();
         }
-        else if (TextUtils.isEmpty(Price))
+      /*  else if (TextUtils.isEmpty(Price))
         {
             Toast.makeText(this, "Please write product Price...", Toast.LENGTH_SHORT).show();
-        }
+        }*/
         else if (TextUtils.isEmpty(Pname))
         {
             Toast.makeText(this, "Please write product name...", Toast.LENGTH_SHORT).show();
@@ -136,7 +130,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
     private void StoreProductInformation() {
         loadingBar.setTitle("Add New Product");
-        loadingBar.setMessage("Dear Admin, please wait while we are adding the new product.");
+        loadingBar.setMessage("Dear user, please wait while we are adding the new product.");
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 
@@ -149,7 +143,6 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         saveCurrentTime = currentTime.format(calendar.getTime());
 
         productRandomKey = saveCurrentDate + saveCurrentTime;
-
 
         final StorageReference filePath = ProductImagesRef.child(ImageUri.getLastPathSegment() + productRandomKey + ".jpg");
 
@@ -208,7 +201,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         productMap.put("description", Description);
         productMap.put("image", downloadImageUrl);
         productMap.put("category", CategoryName);
-        productMap.put("price", Price);
+       // productMap.put("price", Price);
         productMap.put("pname", Pname);
         productMap.put("reserver","non");
         productMap.put("user", getIntent().getExtras().get("loggedUser").toString());
@@ -221,6 +214,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
                         if (task.isSuccessful())
                         {
                             Intent intent = new Intent(AdminAddNewProductActivity.this, AdminCategoryActivity.class);
+                            intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
                             startActivity(intent);
 
                             loadingBar.dismiss();

@@ -53,7 +53,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private ActivityHomeBinding binding;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-
+    //String destinataire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +94,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
         userNameTextView.setText(Prevalent.currentOnLineUser.getName());
+        Picasso.get().load(Prevalent.currentOnLineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
 
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
@@ -112,8 +113,8 @@ Button reserver;
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
-                        holder.txtProductPrice.setText(Html.fromHtml("<a href=\"mailto:"+model.getPrice()+"\">"+model.getPrice()+"</a>"));
-                        holder.txtProductPrice.setMovementMethod(LinkMovementMethod.getInstance());
+                        holder.txtProductPrice.setText(model.getUser());
+                        //destinataire=model.getUser();
                        // holder.txtProductName.setText(model.getPname());
                         holder.txtProductDescription.setText("ville : "+model.getDescription());
 
@@ -163,14 +164,15 @@ Button reserver;
                             }
                         });
                         if(model.getReserver().equals("non")){
-                            holder.reserver.setBackgroundResource(R.color.gris);
+                            holder.reserver.setBackgroundResource(R.color.green3);
                         }
                         else{
-                            holder.reserver.setBackgroundResource(R.color.white);
+                            holder.reserver.setBackgroundResource(R.color.gris);
                             if(model.getReserver().equals(getIntent().getExtras().get("loggedUser").toString())){
-                                holder.reserver.setText("annuler");}
+                                holder.reserver.setText("cancel");}
                             else{
-                                holder.reserver.setText("deja reserver");
+                                holder.reserver.setBackgroundResource(R.color.red);
+                                holder.reserver.setText("reserved");
                             }
                         }
 
@@ -242,33 +244,45 @@ adapter.startListening();
     @Override
     public boolean onNavigationItemSelected(MenuItem item)
     {
-
+        Log.d("myTag", "This is my messageeeeeeeeeeeeeeeeeee");
 
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.contact_admin)
         {
-            Intent intent = new Intent(HomeActivity.this,ChatActivity.class);
+            Intent intent = new Intent(this, messageActivity.class);
+            intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
+
             startActivity(intent);
         }
         else if (id == R.id.nav_settings)
         {
 
             Intent intent = new Intent(HomeActivity.this, SettinsActivity.class);
+            intent.putExtra("loggedUser", Prevalent.currentOnLineUser.getPhone());
             startActivity(intent);
         }
         else if (id == R.id.nav_about_as)
         {
 
             Intent intent = new Intent(HomeActivity.this, AboutAsActivity.class);
+            intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
+            startActivity(intent);
+        }
+        else if (id == R.id.contact_as)
+        {
+
+            Intent intent = new Intent(HomeActivity.this, BotChatActivity.class);
+            intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
             startActivity(intent);
         }
         else if (id == R.id.nav_logout)
         {
             Paper.book().destroy();
 
-            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+            Intent intent = new Intent(HomeActivity.this, AnimationLoginActivity.class);
+
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
@@ -286,11 +300,14 @@ adapter.startListening();
         startActivity(intent);
     }
 
-    public void reserver(View view) {
+    public void parler(View view){
+        TextView b=(TextView) view;
+String d=b.getText().toString();
 
-        view.setBackgroundResource(R.color.black);
-
+        Intent intent = new Intent(this, ChatActivity.class);
+        intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
+        intent.putExtra("destinataire",d);
+        startActivity(intent);
     }
-
 
 }

@@ -13,13 +13,16 @@ public class AboutAsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_as);
-        close = (Button) findViewById(R.id.btn_close);
-      /*  close.setOnClickListener(new View.OnClickListener() {
+      close= (Button) findViewById(R.id.btn_close);
+        close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(AboutAsActivity.this,HomeActivity.class);
+
+                Intent intent = new Intent(AboutAsActivity.this,HomeActivity.class);
+                intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
                 startActivity(intent);
+
             }
-        });*/
+        });
     }
 }

@@ -20,13 +20,22 @@
             android:iconTint="@android:color/holo_green_light"
             />
         <item
+            android:id="@+id/contact_as"
+            android:icon="@drawable/ic_baseline_message_24"
+            android:title="Contact Us"
+            android:iconTint="@android:color/holo_green_light"
+            android:onClick="onNavigationItemSelected"
+            />
+        <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_baseline_login_24"
             android:title="Log Out"
             android:iconTint="@android:color/holo_green_light"
             android:onClick="onNavigationItemSelected"
             />
-        />
+
+
+
 
     </group>
 </menu>
