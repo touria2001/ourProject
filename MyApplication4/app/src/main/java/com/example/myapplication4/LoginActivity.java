@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     // private TextView AdminLink,NotAdminLink;
     private TextView NotAdminLink;
     private String parentDbName = "Users";
-    private CheckBox checkBoxRemrmberMe;
+    private RadioButton checkBoxRemrmberMe;
     private TextView forgotPassword;
 
     @Override
@@ -49,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 //        AdminLink =(TextView) findViewById(R.id.admin_panel_link) ;
         NotAdminLink =(TextView) findViewById(R.id.not_admin_panel_link) ;
         LoadingBar = new ProgressDialog(this);
-        checkBoxRemrmberMe = (CheckBox) findViewById(R.id.remember_me_chkb);
+        checkBoxRemrmberMe = (RadioButton) findViewById(R.id.remember_me_chkb);
         Paper.init(this);
 
         LoginButton.setOnClickListener(new View.OnClickListener() {

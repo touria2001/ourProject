@@ -63,9 +63,9 @@
         android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
-        <com.rey.material.widget.CheckBox
+        <RadioButton
             android:id="@+id/remember_me_chkb"
-            style="@style/Material.Drawable.CheckBox"
+           style="@style/colored_checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="17dp"
@@ -73,7 +73,8 @@
             android:text="remember me"
             android:textColor="@color/likeWhite"
             android:textSize="13dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:buttonTint="@color/green1"/>
 
         <TextView
             android:id="@+id/forget_password_link"
