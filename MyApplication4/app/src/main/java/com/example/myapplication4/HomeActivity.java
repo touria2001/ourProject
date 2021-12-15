@@ -53,7 +53,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private ActivityHomeBinding binding;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    String destinataire;
+    //String destinataire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,8 +113,8 @@ Button reserver;
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
-                        holder.txtProductPrice.setText("contacter  ");
-                        destinataire=model.getUser();
+                        holder.txtProductPrice.setText(model.getUser());
+                        //destinataire=model.getUser();
                        // holder.txtProductName.setText(model.getPname());
                         holder.txtProductDescription.setText("ville : "+model.getDescription());
 
@@ -301,9 +301,12 @@ adapter.startListening();
     }
 
     public void parler(View view){
+        TextView b=(TextView) view;
+String d=b.getText().toString();
+
         Intent intent = new Intent(this, ChatActivity.class);
         intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
-        intent.putExtra("destinataire",destinataire );
+        intent.putExtra("destinataire",d);
         startActivity(intent);
     }
 
