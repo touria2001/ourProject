@@ -61,21 +61,13 @@ public class ChatActivity extends AppCompatActivity {
                         String m=saveCurrentDate + saveCurrentTime;
                 productRandomKey = m.replace(".",",");
              Log.d("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",productRandomKey);
-            //  reference.child(getIntent().getExtras().get("destinataire").toString()).child("messages").child("hh").child("message").setValue(messageSend.getText().toString());
-//                reference.child(getIntent().getExtras().get("destinataire").toString()).child("messages").child( "hh").child("user").setValue(getIntent().getExtras().get("loggedUser").toString());
-//                reference.child(getIntent().getExtras().get("destinataire").toString()).child("messages").child( "hh").child("destinataire").setValue(getIntent().getExtras().get("destinataire").toString());
-
-                HashMap<String, Object> productMap = new HashMap<>();
+                 HashMap<String, Object> productMap = new HashMap<>();
                 productMap.put("message", messageSend.getText().toString());
-//                productMap.put("date", saveCurrentDate);
-//                productMap.put("time", saveCurrentTime);
-                productMap.put("user", getIntent().getExtras().get("loggedUser").toString());
+                  productMap.put("user", getIntent().getExtras().get("loggedUser").toString());
                 productMap.put("destinataire", getIntent().getExtras().get("destinataire").toString());
-                String name=getIntent().getExtras().get("loggedUser").toString()+getIntent().getExtras().get("destinataire").toString();
-               reference.child(name).child(productRandomKey).updateChildren(productMap);
-                //reference.child(getIntent().getExtras().get("destinataire").toString()).child("messages").child("hhh2").updateChildren(productMap);
 
-          Toast.makeText(ChatActivity.this, "Message has been sent", Toast.LENGTH_SHORT).show();
+               reference.child(productRandomKey).updateChildren(productMap);
+                Toast.makeText(ChatActivity.this, "Message has been sent", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(ChatActivity.this,HomeActivity.class);
                 intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
                 startActivity(intent);

@@ -113,10 +113,11 @@ Button reserver;
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
-                        holder.txtProductPrice.setText(model.getUser());
+                        holder.txtProductPrice.setText(Html.fromHtml("<u>"+model.getUser()+"</u>"));
+                      //  textView.setText(Html.fromHtml("<u>"+"testest"+"</u>"));
                         //destinataire=model.getUser();
                        // holder.txtProductName.setText(model.getPname());
-                        holder.txtProductDescription.setText("ville : "+model.getDescription());
+                        holder.txtProductDescription.setText(model.getDescription());
 
                         holder.pid = model.getPid();
                         if (!getIntent().getExtras().get("loggedUser").toString().equals(model.getUser())){
@@ -244,7 +245,7 @@ adapter.startListening();
     @Override
     public boolean onNavigationItemSelected(MenuItem item)
     {
-        Log.d("myTag", "This is my messageeeeeeeeeeeeeeeeeee");
+
 
         // Handle navigation view item clicks here.
         int id = item.getItemId();

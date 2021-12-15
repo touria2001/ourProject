@@ -16,4 +16,6 @@
     <color name="likeWhite">#f0f7da</color>
     <color name="red">#F50C3C</color>
     <color name="gris">#B6B2B2</color>
+    <color name="bleu">#0A43F1</color>
+    <color name="bleu2">#1E321D</color>
 </resources>

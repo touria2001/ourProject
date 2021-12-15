@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,13 +28,14 @@ public class whatsapp extends AppCompatActivity {
     private DatabaseReference MessagesRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+    private TextView ourText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_whatsapp);
-
-        MessagesRef = FirebaseDatabase.getInstance().getReference().child("messages").child(getIntent().getExtras().get("loggedUser").toString()+getIntent().getExtras().get("ourUserActuel").toString());
+         ourText = (TextView) findViewById(R.id.ourMsg);
+        MessagesRef = FirebaseDatabase.getInstance().getReference().child("messages");
         recyclerView = findViewById(R.id.recycler_menuWhatsapp);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -50,8 +52,20 @@ public class whatsapp extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<MessageUser, MessageUserViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull MessageUserViewHolder holder, int position, @NonNull MessageUser model) {
-                      
-                        holder.ourMsg.setText(model.getMessage());
+                        if(model.getDestinataire().equals(getIntent().getExtras().get("ourUserActuel").toString()) && model.getUser().equals(getIntent().getExtras().get("loggedUser").toString()))
+                        {
+                            holder.ourMsg.setText(model.getMessage());
+                        } else if (model.getDestinataire().equals(getIntent().getExtras().get("loggedUser").toString()) && model.getUser().equals(getIntent().getExtras().get("ourUserActuel").toString())){
+                            holder.ourMsg.setText(model.getMessage());
+                            holder.ourMsg.setGravity(Gravity.RIGHT);
+                        }else {
+                            holder.ourMsg.setVisibility(View.GONE);
+                        }
+
+
+
+
+
 
 
                     }
@@ -67,5 +81,6 @@ public class whatsapp extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+
     }
 }
