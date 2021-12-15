@@ -13,7 +13,7 @@
         android:layout_width="358dp"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:background="@color/green3">
+       >
 
 
         <de.hdodenhof.circleimageview.CircleImageView
