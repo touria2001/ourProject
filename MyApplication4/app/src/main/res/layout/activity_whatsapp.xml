@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -18,11 +19,12 @@
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/ourUserImg"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:src="@drawable/profile"
             app:civ_border_width="2dp"
+            android:layout_margin="8dp"
             app:civ_border_color="@android:color/white"/>
 
 
@@ -32,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="destinataire"
-
+            android:textColor="@color/likeWhite"
             android:textAlignment="center"
             android:layout_gravity="center"
             android:textSize="20dp"
@@ -44,53 +46,45 @@
 
     </LinearLayout>
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_menuWhatsapp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/pr"
-        android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_width="366dp"
+        android:layout_height="561dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.419"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pr"
+        app:layout_constraintVertical_bias="0.0">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <EditText
         android:id="@+id/messagesend"
-        android:layout_width="376dp"
-        android:layout_height="60dp"
-        android:layout_below="@+id/recycler_menuWhatsapp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="330dp"
-        android:layout_marginEnd="13dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="269dp"
+        android:layout_height="57dp"
 
-    <Button
-        android:id="@+id/send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/messagesend"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="248dp"
-        android:background="@drawable/buttons"
-        android:onClick="chat"
-        android:padding="5dp"
-        android:text="send"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="18dp"
-        android:textStyle="italic"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/message"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-</RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/send"
+        android:layout_width="46dp"
+        android:layout_height="44dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="28dp"
+        android:background="@color/white"
+        android:onClick="chat"
+        android:src="@drawable/ic_baseline_send_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toEndOf="@+id/messagesend" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

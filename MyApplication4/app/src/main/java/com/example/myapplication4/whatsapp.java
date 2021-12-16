@@ -83,6 +83,7 @@ public class whatsapp extends AppCompatActivity {
                             holder.ourMsg.setVisibility(View.GONE);
                             // holder.ourMsg.setBackgroundResource(R.drawable.message);
 
+
                         }else {
                             holder.ourMsg.setVisibility(View.GONE);
                         }  }
