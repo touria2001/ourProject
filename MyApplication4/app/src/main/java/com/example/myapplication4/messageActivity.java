@@ -42,8 +42,8 @@ private String ourUserActuel;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
         MessagesRef = FirebaseDatabase.getInstance().getReference().child("Users");
-        CircleImageView profileImageView = (CircleImageView) findViewById(R.id.ourUserImg);
-        Picasso.get().load(Prevalent.currentOnLineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+       // CircleImageView profileImageView = (CircleImageView) findViewById(R.id.ourUserImg);
+       // Picasso.get().load(Prevalent.currentOnLineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
 
 
         recyclerView = findViewById(R.id.recycler_menuChat);
@@ -91,7 +91,7 @@ private String ourUserActuel;
                             holder.ourUser.setVisibility(View.GONE);
                         }
 
-                        Picasso.get().load(model.getImg()).into(holder.ourUserImg);
+                      //  Picasso.get().load(model.getImg()).into(holder.ourUserImg);
 
 
                     }
