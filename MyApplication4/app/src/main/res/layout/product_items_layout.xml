@@ -48,7 +48,7 @@
 
             android:textAlignment="center"
             android:textColor="@color/bleu"
-           
+
             android:layout_marginStart="88dp"
             android:layout_marginEnd="88dp"
             android:textSize="18dp"

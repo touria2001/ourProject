@@ -22,15 +22,18 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import Model.Products;
 import Model.message;
 import Prevalent.Prevalent;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class messageActivity extends AppCompatActivity {
     private DatabaseReference MessagesRef;
 private String ourUserActuel;
-    TextView ourUser;
+   // TextView ourUser;
+   // CircleImageView profileImageView;
 
     DatabaseReference reference;
     private RecyclerView recyclerView;
@@ -40,11 +43,15 @@ private String ourUserActuel;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
         MessagesRef = FirebaseDatabase.getInstance().getReference().child("Users");
+       //profileImageView = (CircleImageView) findViewById(R.id.ourUserImg);
+       // Picasso.get().load(Prevalent.currentOnLineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+
 
         recyclerView = findViewById(R.id.recycler_menuChat);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+
 
       /*  messageRecu=(TextView) findViewById(R.id.messageRecu);
 
@@ -76,9 +83,19 @@ private String ourUserActuel;
                 new FirebaseRecyclerAdapter<message, MessageViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull MessageViewHolder holder, int position, @NonNull message model) {
-
+                        if( !model.getPhone().equals(getIntent().getExtras().get("loggedUser").toString())){
                         holder.ourUser.setText(model.getPhone());
                         ourUserActuel = model.getPhone();
+
+                        }
+                        else {
+                            holder.ourUser.setVisibility(View.GONE);
+                            holder.ourUserImg.setVisibility(View.GONE);
+
+                        }
+
+                      //  Picasso.get().load(model.getImg()).into(holder.ourUserImg);
+
 
                     }
 
