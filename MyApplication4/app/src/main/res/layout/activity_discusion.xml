@@ -2,28 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    app:cardElevation="15dp">
-
+    >
 
 
         <TextView
             android:id="@+id/ourMsg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+           android:background="@drawable/buttons"
             android:textSize="18dp"
-            android:background="@color/gris"
-            android:padding="10dp"
-            android:shape="ring"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-/>
-
-
-
-
+            android:padding="7dp"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/ourMsg2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/message"
+            android:textSize="18dp"
+            android:padding="7dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="right"
+            android:visibility="gone"/>
 
 
 </LinearLayout>

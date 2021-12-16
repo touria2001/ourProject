@@ -1,5 +1,7 @@
 package com.example.myapplication4;
 
+import static android.view.Gravity.CENTER_HORIZONTAL;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +17,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,11 +37,11 @@ import Model.MessageUser;
 import Model.message;
 
 public class whatsapp extends AppCompatActivity {
-    private String ourMsg;
+    private String ourMsg,ourMsg2;
     private DatabaseReference MessagesRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    private TextView ourText;
+    private TextView ourText,ourText2;
     EditText messageSend;
     DatabaseReference reference;
     private String saveCurrentDate, saveCurrentTime,productRandomKey;
@@ -47,6 +51,7 @@ public class whatsapp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_whatsapp);
          ourText = (TextView) findViewById(R.id.ourMsg);
+        ourText2 = (TextView) findViewById(R.id.ourMsg2);
         MessagesRef = (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("messages");
         recyclerView = findViewById(R.id.recycler_menuWhatsapp);
         recyclerView.setHasFixedSize(true);
@@ -70,9 +75,10 @@ public class whatsapp extends AppCompatActivity {
                         {
                             holder.ourMsg.setText(model.getMessage());
                         } else if (model.getDestinataire().equals(getIntent().getExtras().get("loggedUser").toString()) && model.getUser().equals(getIntent().getExtras().get("ourUserActuel").toString())){
-                            holder.ourMsg.setText(model.getMessage());
-                            holder.ourMsg.setGravity(Gravity.RIGHT);
-                            holder.ourMsg.setBackgroundResource(R.color.bleu);
+                            holder.ourMsg2.setText(model.getMessage());
+                            holder.ourMsg2.setVisibility(View.VISIBLE);
+                            holder.ourMsg.setVisibility(View.GONE);
+                            // holder.ourMsg.setBackgroundResource(R.drawable.message);
 
                         }else {
                             holder.ourMsg.setVisibility(View.GONE);
@@ -107,47 +113,65 @@ public class whatsapp extends AppCompatActivity {
 //        startActivity(intent);
 //    }
     public void chat(View view) {
-        AlertDialog.Builder alert =new AlertDialog.Builder(this);
-        alert.setMessage("do you want to send the message? ");
-        alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                reference= FirebaseDatabase.getInstance().getReference("messages");
+        reference= FirebaseDatabase.getInstance().getReference("messages");
                 Calendar calendar = Calendar.getInstance();
+
 
                 SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
                 saveCurrentDate = currentDate.format(calendar.getTime());
-
                 SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
                 saveCurrentTime = currentTime.format(calendar.getTime());
-                // myStr.replace('l', 'p')
-                String m=saveCurrentDate + saveCurrentTime;
+               String m=saveCurrentDate + saveCurrentTime;
                 productRandomKey = m.replace(".",",");
-               //Log.d("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",productRandomKey);
-                HashMap<String, Object> productMap = new HashMap<>();
+               HashMap<String, Object> productMap = new HashMap<>();
                 productMap.put("message", messageSend.getText().toString());
                 productMap.put("user", getIntent().getExtras().get("loggedUser").toString());
                 productMap.put("destinataire", getIntent().getExtras().get("ourUserActuel").toString());
 
                 reference.child(productRandomKey).updateChildren(productMap);
-                Toast.makeText(whatsapp.this, "Message has been sent", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(whatsapp.this, HomeActivity.class);
-           intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
-        startActivity(intent);
-            }
-        });
-        alert.setNegativeButton("no", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                Toast.makeText(whatsapp.this, "Messge was not sent", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(whatsapp.this, HomeActivity.class);
-               intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
-            startActivity(intent);
-
-            }
-        });
-
-        alert.create().show();
+        EditText t=(EditText)findViewById(R.id.messagesend) ;
+        t.setText("");
+//        AlertDialog.Builder alert =new AlertDialog.Builder(this);
+//        alert.setMessage("do you want to send the message? ");
+//        alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int i) {
+//                reference= FirebaseDatabase.getInstance().getReference("messages");
+//                Calendar calendar = Calendar.getInstance();
+//
+//                SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+//                saveCurrentDate = currentDate.format(calendar.getTime());
+//
+//                SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+//                saveCurrentTime = currentTime.format(calendar.getTime());
+//                // myStr.replace('l', 'p')
+//                String m=saveCurrentDate + saveCurrentTime;
+//                productRandomKey = m.replace(".",",");
+//               //Log.d("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",productRandomKey);
+//                HashMap<String, Object> productMap = new HashMap<>();
+//                productMap.put("message", messageSend.getText().toString());
+//                productMap.put("user", getIntent().getExtras().get("loggedUser").toString());
+//                productMap.put("destinataire", getIntent().getExtras().get("ourUserActuel").toString());
+//
+//                reference.child(productRandomKey).updateChildren(productMap);
+//                Toast.makeText(whatsapp.this, "Message has been sent", Toast.LENGTH_SHORT).show();
+////                Intent intent = new Intent(whatsapp.this, HomeActivity.class);
+////           intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
+////        startActivity(intent);
+//            }
+//        });
+//        alert.setNegativeButton("no", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int i) {
+//                Toast.makeText(whatsapp.this, "Messge was not sent", Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(whatsapp.this, HomeActivity.class);
+//               intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
+//            startActivity(intent);
+//
+//            }
+//        });
+//
+//        alert.create().show();
 
 
 

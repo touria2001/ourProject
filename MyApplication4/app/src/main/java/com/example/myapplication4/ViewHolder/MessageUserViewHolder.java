@@ -12,6 +12,7 @@ import com.example.myapplication4.R;
 public class MessageUserViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public TextView ourMsg;
+    public TextView ourMsg2;
     public ItemClickListner listner;
 
 
@@ -22,6 +23,7 @@ public class MessageUserViewHolder extends RecyclerView.ViewHolder implements Vi
     public MessageUserViewHolder(@NonNull View itemView) {
         super(itemView);
         ourMsg = (TextView) itemView.findViewById(R.id.ourMsg);
+        ourMsg2 = (TextView) itemView.findViewById(R.id.ourMsg2);
 
 
 
