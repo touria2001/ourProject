@@ -13,7 +13,7 @@ import com.example.myapplication4.R;
 public class MessageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
 {
     public TextView ourUser;
-   // public ImageView ourUserImg;
+   public ImageView ourUserImg;
     public ItemClickListner listner;
 
 
@@ -24,7 +24,7 @@ public class MessageViewHolder extends RecyclerView.ViewHolder implements View.O
     public MessageViewHolder(@NonNull View itemView) {
         super(itemView);
         ourUser = (TextView) itemView.findViewById(R.id.ourUser);
-      //  ourUserImg = (ImageView) itemView.findViewById(R.id.ourUserImg);
+        ourUserImg = (ImageView) itemView.findViewById(R.id.ourUserImg);
 
 
 

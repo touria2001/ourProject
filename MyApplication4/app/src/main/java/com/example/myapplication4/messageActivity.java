@@ -32,7 +32,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class messageActivity extends AppCompatActivity {
     private DatabaseReference MessagesRef;
 private String ourUserActuel;
-    TextView ourUser;
+   // TextView ourUser;
+   // CircleImageView profileImageView;
 
     DatabaseReference reference;
     private RecyclerView recyclerView;
@@ -42,7 +43,7 @@ private String ourUserActuel;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
         MessagesRef = FirebaseDatabase.getInstance().getReference().child("Users");
-       // CircleImageView profileImageView = (CircleImageView) findViewById(R.id.ourUserImg);
+       //profileImageView = (CircleImageView) findViewById(R.id.ourUserImg);
        // Picasso.get().load(Prevalent.currentOnLineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
 
 
@@ -89,6 +90,8 @@ private String ourUserActuel;
                         }
                         else {
                             holder.ourUser.setVisibility(View.GONE);
+                            holder.ourUserImg.setVisibility(View.GONE);
+
                         }
 
                       //  Picasso.get().load(model.getImg()).into(holder.ourUserImg);
