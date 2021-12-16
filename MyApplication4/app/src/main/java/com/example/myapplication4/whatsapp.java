@@ -82,16 +82,7 @@ public class whatsapp extends AppCompatActivity {
 
                         }else {
                             holder.ourMsg.setVisibility(View.GONE);
-                        }
-
-
-
-
-
-
-
-
-                    }
+                        }  }
 
                     @NonNull
                     @Override
@@ -107,11 +98,7 @@ public class whatsapp extends AppCompatActivity {
 
 
     }
-//    public void chat(View view) {
-//        Intent intent = new Intent(this, HomeActivity.class);
-//        intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
-//        startActivity(intent);
-//    }
+
     public void chat(View view) {
         reference= FirebaseDatabase.getInstance().getReference("messages");
                 Calendar calendar = Calendar.getInstance();
@@ -131,107 +118,9 @@ public class whatsapp extends AppCompatActivity {
                 reference.child(productRandomKey).updateChildren(productMap);
         EditText t=(EditText)findViewById(R.id.messagesend) ;
         t.setText("");
-//        AlertDialog.Builder alert =new AlertDialog.Builder(this);
-//        alert.setMessage("do you want to send the message? ");
-//        alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int i) {
-//                reference= FirebaseDatabase.getInstance().getReference("messages");
-//                Calendar calendar = Calendar.getInstance();
-//
-//                SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
-//                saveCurrentDate = currentDate.format(calendar.getTime());
-//
-//                SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
-//                saveCurrentTime = currentTime.format(calendar.getTime());
-//                // myStr.replace('l', 'p')
-//                String m=saveCurrentDate + saveCurrentTime;
-//                productRandomKey = m.replace(".",",");
-//               //Log.d("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",productRandomKey);
-//                HashMap<String, Object> productMap = new HashMap<>();
-//                productMap.put("message", messageSend.getText().toString());
-//                productMap.put("user", getIntent().getExtras().get("loggedUser").toString());
-//                productMap.put("destinataire", getIntent().getExtras().get("ourUserActuel").toString());
-//
-//                reference.child(productRandomKey).updateChildren(productMap);
-//                Toast.makeText(whatsapp.this, "Message has been sent", Toast.LENGTH_SHORT).show();
-////                Intent intent = new Intent(whatsapp.this, HomeActivity.class);
-////           intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
-////        startActivity(intent);
-//            }
-//        });
-//        alert.setNegativeButton("no", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int i) {
-//                Toast.makeText(whatsapp.this, "Messge was not sent", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(whatsapp.this, HomeActivity.class);
-//               intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
-//            startActivity(intent);
-//
-//            }
-//        });
-//
-//        alert.create().show();
+
 
 
 
     }
 }
-   // EditText messageSend;
-//    DatabaseReference reference;
-//    private String saveCurrentDate, saveCurrentTime,productRandomKey;
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_chat);
-//        messageSend=(EditText) findViewById(R.id.messagesend);
-//
-//    }
-//
-//    public void chat(View view) {
-//        AlertDialog.Builder alert =new AlertDialog.Builder(this);
-//        alert.setMessage("do you want to send the message? ");
-//        alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int i) {
-//                reference= FirebaseDatabase.getInstance().getReference("messages");
-//                Calendar calendar = Calendar.getInstance();
-//
-//                SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
-//                saveCurrentDate = currentDate.format(calendar.getTime());
-//
-//                SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
-//                saveCurrentTime = currentTime.format(calendar.getTime());
-//                // myStr.replace('l', 'p')
-//                String m=saveCurrentDate + saveCurrentTime;
-//                productRandomKey = m.replace(".",",");
-//                Log.d("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",productRandomKey);
-//                HashMap<String, Object> productMap = new HashMap<>();
-//                productMap.put("message", messageSend.getText().toString());
-//                productMap.put("user", getIntent().getExtras().get("loggedUser").toString());
-//                productMap.put("destinataire", getIntent().getExtras().get("destinataire").toString());
-//
-//                reference.child(productRandomKey).updateChildren(productMap);
-//                Toast.makeText(ChatActivity.this, "Message has been sent", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(ChatActivity.this,HomeActivity.class);
-//                intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
-//                startActivity(intent);
-//            }
-//        });
-//        alert.setNegativeButton("no", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int i) {
-//                Toast.makeText(ChatActivity.this, "Messge was not sent", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(ChatActivity.this, HomeActivity.class);
-//                intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
-//
-//                startActivity(intent);
-//
-//            }
-//        });
-//
-//        alert.create().show();
-//
-//
-//
-  //  }

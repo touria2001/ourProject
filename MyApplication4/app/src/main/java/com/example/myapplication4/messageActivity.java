@@ -76,9 +76,13 @@ private String ourUserActuel;
                 new FirebaseRecyclerAdapter<message, MessageViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull MessageViewHolder holder, int position, @NonNull message model) {
-
+                        if( !model.getPhone().equals(getIntent().getExtras().get("loggedUser").toString())){
                         holder.ourUser.setText(model.getPhone());
                         ourUserActuel = model.getPhone();
+                        }
+                        else {
+                            holder.ourUser.setVisibility(View.GONE);
+                        }
 
                     }
 
