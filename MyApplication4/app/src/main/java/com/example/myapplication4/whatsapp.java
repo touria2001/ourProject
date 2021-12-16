@@ -45,6 +45,7 @@ public class whatsapp extends AppCompatActivity {
     EditText messageSend;
     DatabaseReference reference;
     private String saveCurrentDate, saveCurrentTime,productRandomKey;
+    TextView ourUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -52,6 +53,8 @@ public class whatsapp extends AppCompatActivity {
         setContentView(R.layout.activity_whatsapp);
          ourText = (TextView) findViewById(R.id.ourMsg);
         ourText2 = (TextView) findViewById(R.id.ourMsg2);
+        ourUser=(TextView)findViewById(R.id.ourUser);
+        ourUser.setText(getIntent().getExtras().get("ourUserActuel").toString());
         MessagesRef = (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("messages");
         recyclerView = findViewById(R.id.recycler_menuWhatsapp);
         recyclerView.setHasFixedSize(true);
