@@ -55,6 +55,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     RecyclerView.LayoutManager layoutManager;
     //String destinataire;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -272,11 +274,15 @@ adapter.startListening();
             startActivity(intent);
         }
         else if (id == R.id.contact_as)
-        {
+        {  String chabot="http://10.0.2.2/chatbot.html";
 
-            Intent intent = new Intent(HomeActivity.this, BotChatActivity.class);
+           /* Intent intent = new Intent(HomeActivity.this, BotChatActivity.class);
             intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
+            startActivity(intent);*/
+
+            Intent intent = new Intent (Intent.ACTION_VIEW, Uri.parse(chabot));
             startActivity(intent);
+
         }
         else if (id == R.id.nav_logout)
         {
