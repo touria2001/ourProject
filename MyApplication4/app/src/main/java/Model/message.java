@@ -1,14 +1,14 @@
 package Model;
 
 public class message {
-    private String  phone, img;
+    private String  phone, image;
     public message() {
 
     }
 
-    public message(String phone, String img) {
+    public message(String phone, String image) {
         this.phone = phone;
-        this.img = img;
+        this.image = image;
     }
 
     public String getPhone() {
@@ -19,11 +19,11 @@ public class message {
         this.phone = phone;
     }
 
-    public String getImg() {
-        return img;
+    public String getImage() {
+        return image;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setImg(String image) {
+        this.image = image;
     }
 }

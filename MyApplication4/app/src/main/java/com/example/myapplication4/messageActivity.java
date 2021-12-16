@@ -33,7 +33,7 @@ public class messageActivity extends AppCompatActivity {
     private DatabaseReference MessagesRef;
 private String ourUserActuel;
    // TextView ourUser;
-   // CircleImageView profileImageView;
+   private CircleImageView profileImageView;
 
     DatabaseReference reference;
     private RecyclerView recyclerView;
@@ -43,9 +43,8 @@ private String ourUserActuel;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
         MessagesRef = FirebaseDatabase.getInstance().getReference().child("Users");
-       //profileImageView = (CircleImageView) findViewById(R.id.ourUserImg);
-       // Picasso.get().load(Prevalent.currentOnLineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
-
+       profileImageView = (CircleImageView) findViewById(R.id.ourUserImg);
+        Log.d("fffffffffffffffffffffffffffff", String.valueOf(profileImageView));
 
         recyclerView = findViewById(R.id.recycler_menuChat);
         recyclerView.setHasFixedSize(true);
@@ -86,6 +85,12 @@ private String ourUserActuel;
                         if( !model.getPhone().equals(getIntent().getExtras().get("loggedUser").toString())){
                         holder.ourUser.setText(model.getPhone());
                         ourUserActuel = model.getPhone();
+                       if(String.valueOf(model.getImage()) == "null")  {
+                            holder.ourUserImg.setImageResource(R.drawable.profile);
+                        }else {
+                            Log.d("gggggg",String.valueOf(model.getImage()));
+                            Picasso.get().load(model.getImage()).into(holder.ourUserImg);
+                       }
 
                         }
                         else {
@@ -93,6 +98,7 @@ private String ourUserActuel;
                             holder.ourUserImg.setVisibility(View.GONE);
 
                         }
+
 
                       //  Picasso.get().load(model.getImg()).into(holder.ourUserImg);
 
