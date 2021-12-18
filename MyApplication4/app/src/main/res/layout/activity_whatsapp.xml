@@ -51,15 +51,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_menuWhatsapp"
         android:layout_width="366dp"
-        android:layout_height="561dp"
-
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
 
         app:layout_constraintBottom_toTopOf="@+id/messagesend"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.419"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pr"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/pr">
 
     </androidx.recyclerview.widget.RecyclerView>
 
