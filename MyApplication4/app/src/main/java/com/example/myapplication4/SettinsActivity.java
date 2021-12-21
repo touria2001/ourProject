@@ -105,8 +105,12 @@ public class SettinsActivity extends AppCompatActivity {
         else
         {
             Toast.makeText(this, "Error, Try Again.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(SettinsActivity.this, SettinsActivity.class);
+            intent.putExtra("loggedUser", getIntent().getExtras().get("loggedUser").toString());
 
-            startActivity(new Intent(SettinsActivity.this, SettinsActivity.class));
+            startActivity(intent);
+
+           // startActivity(new Intent(SettinsActivity.this, SettinsActivity.class));
             finish();
         }
     }

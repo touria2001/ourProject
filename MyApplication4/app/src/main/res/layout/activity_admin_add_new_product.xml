@@ -55,7 +55,7 @@
      android:inputType="textMultiLine"
      android:layout_marginTop="6dp"
      android:paddingBottom="100dp"
-     android:hint="Product Description..."
+     android:hint="ville..."
      android:layout_marginLeft="35dp"
      android:layout_marginRight="45dp"
      android:background="@drawable/inputs_design"
